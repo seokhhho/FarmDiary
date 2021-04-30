@@ -43,3 +43,17 @@ See also : #issue, ...(참고 이슈, 생략 가능)
 ex)
 feat: 로그인 기능 구현 / fix: 회원가입 수정
 ```
+
+### Git 사용법
+
+```bash
+git switch 브런치명
+git branch 브런치명
+pull 받는다.
+push 올린다.
+
+순서
+git add.
+git commit -m "메세지"
+git push/pull origin branch
+```
