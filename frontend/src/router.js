@@ -4,6 +4,9 @@ import Index from "./views/Index.vue";
 import Landing from "./views/Landing.vue";
 import Login from "./views/Login.vue";
 import Profile from "./views/Profile.vue";
+import Board from "./views/Board.vue";
+import CreateBoard from "./views/CreateBoard.vue";
+import ReadBoard from "./views/ReadBoard.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 
@@ -45,7 +48,38 @@ export default new Router({
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
       }
-    }
+    },
+    {
+      path: "/board",
+      name: "board",
+      components: { default: Board, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 200 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/createBoard",
+      name: "createBoard",
+      components: {
+        default: CreateBoard,
+        header: MainNavbar,
+        footer: MainFooter
+      },
+      props: {
+        header: { colorOnScroll: 200 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/board/:id",
+      name: "readBoard",
+      components: { default: ReadBoard, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 200 },
+        footer: { backgroundColor: "black" }
+      }
+    },
   ],
   scrollBehavior: to => {
     if (to.hash) {
