@@ -20,9 +20,64 @@
               {{ board.contents }}
             </div>
             <p style="width:90%;">
-              <v-btn style="width:10%; margin-left:79%;margin-top:10px;margin-right:20px">수정</v-btn>
-              <v-btn style="width:10%; margin-left:90%;margin-top:-60px">삭제</v-btn>
+              <v-btn
+                style="width:10%; margin-left:79%;margin-top:10px;margin-right:20px"
+                >수정</v-btn
+              >
+              <v-btn style="width:10%; margin-left:90%;margin-top:-60px"
+                >삭제</v-btn
+              >
             </p>
+            <div v-for="(item,index) in reply" :key="item.id" id="reply">
+              <div @click="openText(index)">
+                <div>{{ item.text }}</div>
+                <div style="font-size:7px">{{ item.date }} </div>
+                <div v-for="comment in item.reReply" :key="comment.id" >
+                  └ {{comment.text}}
+                  <div style="font-size:7px;margin-left:20px">{{ comment.date }} </div>
+                </div>
+                <!-- <div>{{item.reReply[0].text}}</div> -->
+              </div>
+              <div v-if="tmp">
+                <div id="app" style="width:92%;margin-left:-14px;" v-if="re_reply[index]">
+                  <v-container fluid>
+                    <v-textarea
+                      label="댓글달기"
+                      no-resize
+                      rows="1"
+                      :value="value"
+                      style="width:92%;margin-top:-15px "
+                      v-model="reReply"
+                    ></v-textarea>
+                    <v-btn
+                      style="width:8%;margin-top:-58px;margin-left:952px"
+                      @click="createReReply(item.id)"
+                    >
+                      입력
+                    </v-btn>
+                  </v-container>
+                </div>
+              </div>
+            </div>
+
+            <div id="app" style="width:92%;margin-left:-14px">
+              <v-container fluid>
+                <v-textarea
+                  label="댓글달기"
+                  no-resize
+                  rows="1"
+                  :value="value"
+                  style="width:92%"
+                  v-model="createdReply"
+                ></v-textarea>
+                <v-btn
+                  style="width:8%;margin-top:-58px;margin-left:952px"
+                  @click="createReply()"
+                >
+                  입력
+                </v-btn>
+              </v-container>
+            </div>
           </div>
         </div>
       </div>
@@ -37,6 +92,11 @@ export default {
   data() {
     return {
       board: [],
+      reply: [],
+      createdReply: '',
+      re_reply: [],
+      tmp: false,
+      reReply:'',
     };
   },
 
@@ -55,6 +115,7 @@ export default {
   },
   created() {
     this.readBoard();
+    this.readReply();
   },
   methods: {
     async readBoard() {
@@ -63,7 +124,7 @@ export default {
           params: { type: 'id', word: this.$route.params.id },
         });
         this.board = res.data[0];
-        console.log(res.data[0].title + '?');
+        //console.log(res.data[0]+ 'ㅋㅋㅋ?');
         // this.hashKey = res.data.vote.hashKey;
         // const idx = res.data.vote.contractAddress * 1;
         // await this.getData(idx);
@@ -73,6 +134,69 @@ export default {
         console.log(err);
       }
     },
+
+    async readReply() {
+      try {
+        const res = await axios.get(`${SERVER_URL}/reply/read`, {
+          params: { boardId: this.$route.params.id },
+        });
+        this.reply = res.data;
+        console.log("sdf" + this.reply.length);
+        for(var i=0;i < this.reply.length;i++){
+          this.re_reply.push(false);
+        }
+        console.log(this.re_reply[0] + 'fhtr?');
+        // this.hashKey = res.data.vote.hashKey;
+        // const idx = res.data.vote.contractAddress * 1;
+        // await this.getData(idx);
+
+        // this.n = idx;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    createReply() {
+      this.form = {
+        boardId: this.$route.params.id,
+        text: this.createdReply,
+        reReply:[],
+      };
+      axios
+        .post(`${SERVER_URL}/reply/create`, this.form, {})
+        .then((response) => {
+          // confirm("작성하시겠습니까?");
+          // alert('글쓰기 성공!');
+          location.reload();
+        })
+        .catch(function(error) {});
+    },
+
+    createReReply(index){
+      this.form = {
+        replyId: index,
+        text: this.reReply,
+      };
+      axios
+        .put(`${SERVER_URL}/reply/updateReReply`, this.form, {})
+        .then((response) => {
+          // confirm("작성하시겠습니까?");
+          // alert('글쓰기 성공!');
+          location.reload();
+        })
+        .catch(function(error) {});
+    },
+
+    openText(index){
+      console.log(this.re_reply[index] + "sdfsdfsdfsdf")
+      if(this.re_reply[index]){
+        this.re_reply[index] = false;
+        this.tmp = false;
+      }else{
+        this.re_reply[index] = true;
+        this.tmp = true;
+      }
+    }
   },
   computed: {
     headerStyle() {
@@ -105,7 +229,12 @@ export default {
 }
 #detailContents {
   border: 1px solid grey;
-  width:90%;
-  height:400px;
+  width: 90%;
+  height: 400px;
+}
+#reply {
+  border-bottom: 1px solid rgb(185, 181, 181);
+  width: 90%;
+  margin-bottom: 10px;
 }
 </style>
