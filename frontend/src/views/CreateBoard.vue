@@ -8,35 +8,40 @@
       <div class="section profile-content">
         <div class="container">
           <div class="md-layout">
-            <div class="md-layout-item md-size-50 mx-auto"><div style="text-align:center">
-            <h2>나눔 글쓰기</h2>
-            </div></div>
+            <div class="md-layout-item md-size-50 mx-auto">
+              <div style="text-align:center">
+                <h2>나눔 글쓰기</h2>
+              </div>
+            </div>
             <!-- <div>gdgdg</div> -->
-            
+
             <!-- <div style="width:800px"> -->
             <p style="width:90%">
-            <v-text-field
-              label="Title"
-              :rules="rules"
-              hide-details="auto"
-              v-model="title" 
-            >
-            </v-text-field>
+              <v-text-field
+                label="Title"
+                :rules="rules"
+                hide-details="auto"
+                v-model="title"
+              >
+              </v-text-field>
             </p>
             <!-- </div> -->
-            <br/>
+            <br />
+            <input type="file" id="img" style="margin-left:30px" />
             <p style="width:90%;text-align:center;margin-top:20px">
-            <v-textarea
-              solo
-              name="input-7-4"
-              label="Contents"
-              v-model="contents"
-              id="contents"
-              height="500"
-            ></v-textarea>
+              <v-textarea
+                solo
+                name="input-7-4"
+                label="Contents"
+                v-model="contents"
+                id="contents"
+                height="500"
+              ></v-textarea>
             </p>
             <p style="width:90%;text-align:center">
-            <v-btn @click="create()" style="width:90%; margin-left:0px;">글쓰기</v-btn>
+              <v-btn @click="create()" style="width:90%; margin-left:0px;"
+                >글쓰기</v-btn
+              >
             </p>
           </div>
         </div>
@@ -72,19 +77,38 @@ export default {
   },
   methods: {
     create() {
-      this.form = {
+      const item = {
         title: this.title,
-        content: this.contents,
+        contents: this.contents,
       };
-      axios
-        .post(`${SERVER_URL}/board/create`, this.form, {})
-        .then((response) => {
-          confirm("작성하시겠습니까?");
-          alert('글쓰기 성공!');
-          this.$router.push('Board');
-        })
-        .catch(function(error) {});
-    },
+      const frm = new FormData();
+      var img = document.getElementById('img');
+
+      if (img.files.length != 0) {
+        frm.append('file', img.files[0]);
+        axios
+          .post(`${SERVER_URL}/file/upload/`, frm)
+          .then((res) => {
+            // console.log(res.data.message)
+            // item.push({img: SERVER_URL + "/file/read/" + res.data.message})
+            item['img'] = SERVER_URL + '/file/read/' + res.data.message;
+
+            // DB에 저장
+            axios
+              .post(`${SERVER_URL}/board/create`, item, {})
+              .then((response) => {
+                confirm('작성하시겠습니까?');
+                alert('글쓰기 성공!');
+                this.$router.push('Board');
+              })
+              .catch(function(error) {});
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    }
+
   },
   computed: {
     headerStyle() {
@@ -115,9 +139,9 @@ export default {
     }
   }
 
-  #contents{
+  #contents {
     width: 400px;
-    height:500px;
+    height: 500px;
   }
 }
 </style>

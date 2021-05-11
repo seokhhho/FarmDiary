@@ -16,8 +16,15 @@
             <div style="width:90%;text-align:center;margin-top:20px">
               <h2>{{ board.title }}</h2>
             </div>
+            <!-- <img :src="board.img" > -->
             <div id="detailContents">
+              <div style="text-align:center;margin-top:20px;margin-bottom:20px">
+                <img :src="board.img" style="width:30;height:30;" >
+              </div>
+              <br>
+              <div style="margin-bottom:20px">
               {{ board.contents }}
+              </div>
             </div>
             <p style="width:90%;">
               <v-btn
@@ -228,9 +235,10 @@ export default {
   }
 }
 #detailContents {
-  border: 1px solid grey;
+  border-bottom: 1px solid grey;
+  border-top: 1px solid grey;
   width: 90%;
-  height: 400px;
+  // height: 400px;
 }
 #reply {
   border-bottom: 1px solid rgb(185, 181, 181);

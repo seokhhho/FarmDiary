@@ -25,12 +25,14 @@ public class Board {
 	private String title;
 	private String contents;
 	private String date;
+	private String img;
 	
 	@Builder
-	public Board(int bId, String title, String contents, String date) {
+	public Board(int bId, String title, String contents, String date, String img) {
 		this.title = title;
 		this.contents = contents;
 		this.date = date;
+		this.img = img;
 	}
 	
 
