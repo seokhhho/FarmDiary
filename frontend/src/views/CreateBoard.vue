@@ -83,7 +83,6 @@ export default {
       };
       const frm = new FormData();
       var img = document.getElementById('img');
-
       if (img.files.length != 0) {
         frm.append('file', img.files[0]);
         axios
@@ -101,11 +100,21 @@ export default {
                 alert('글쓰기 성공!');
                 this.$router.push('Board');
               })
-              .catch(function(error) {});
+              .catch(function(error) {console.log(err);});
           })
           .catch((err) => {
             console.log(err);
           });
+      }else{
+         // DB에 저장
+            axios
+              .post(`${SERVER_URL}/board/create`, item, {})
+              .then((response) => {
+                confirm('작성하시겠습니까?');
+                alert('글쓰기 성공!');
+                this.$router.push('Board');
+              })
+              .catch(function(error) {console.log(err);});
       }
     }
 
