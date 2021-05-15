@@ -5,3 +5,8 @@ spring:
 mongodb:
   test:
     connectionString: mongodb://k4a305.p.ssafy.io/27017
+
+
+taeng:
+    profile: I'm dev taeng
+    comment: Hello! updated dev taeng!
