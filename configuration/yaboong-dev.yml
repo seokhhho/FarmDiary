@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://k4a305.p.ssafy.io/27017
+      uri: mongodb://k4a305.p.ssafy.io/27018
 mongodb:
   test:
     connectionString: mongodb://k4a305.p.ssafy.io/27017
