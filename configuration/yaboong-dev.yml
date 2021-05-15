@@ -1,3 +1,7 @@
-taeng:
-  profile: I'm dev taeng
-  comment: Hello! updated dev taeng!
+spring:
+  data:
+    mongodb:
+      uri: mongodb://k4a305.p.ssafy.io/27017
+mongodb:
+  test:
+    connectionString: mongodb://k4a305.p.ssafy.io/27017
