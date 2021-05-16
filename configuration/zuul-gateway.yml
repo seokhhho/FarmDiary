@@ -1,14 +1,30 @@
-zuul:
-    routes:
-        member:
-            striPrefix: false
-            path : /v1/member/**
-            url : http://localhost:8080
-        pay:
-            striPrefix: false
-            path : /v1/pay/**
-            url : http://localhost:8081
-        else:
-            striPrefix: false
-            path : /v1/**
-            url : http://localhost:8081
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - name: GlobalFilter
+          args:
+            baseMessage: Spring Cloud Gateway GlobalFilter
+            preLogger: true
+            postLogger: true
+      routes:
+        - id: user-svc
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/user/**
+          filters:
+            - name: UserFilter
+              args:
+                baseMessage: Spring Cloud Gateway UserFilter
+                preLogger: true
+                postLogger: true
+        - id: cafe-svc
+          uri: http://localhost:8082/
+          predicates:
+            - Path=/cafe/**
+          filters:
+            - name: CafeFilter
+              args:
+                baseMessage: Spring Cloud Gateway CafeFilter
+                preLogger: true
+                postLogger: true
