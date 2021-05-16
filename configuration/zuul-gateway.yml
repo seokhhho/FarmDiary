@@ -1,0 +1,16 @@
+cloud:
+    gateway:
+        routes:
+            -   id: order-service
+                uri: http://localhost:8181
+                predicates:
+                    - Path=/order/**
+                filters:
+                    - RewritePath=/order/(?<path>.*),/$\{path}
+
+            -   id: cart-service
+                uri: http://localhost:8181
+                predicates:
+                    - Path=/cart/**
+                filters:
+                    - RewritePath=/cart/(?<path>.*),/$\{path}
