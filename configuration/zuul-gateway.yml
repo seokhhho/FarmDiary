@@ -1,30 +1,16 @@
-spring:
-  cloud:
+cloud:
     gateway:
-      default-filters:
-        - name: GlobalFilter
-          args:
-            baseMessage: Spring Cloud Gateway GlobalFilter
-            preLogger: true
-            postLogger: true
-      routes:
-        - id: user-svc
-          uri: http://localhost:8081/
-          predicates:
-            - Path=/user/**
-          filters:
-            - name: UserFilter
-              args:
-                baseMessage: Spring Cloud Gateway UserFilter
-                preLogger: true
-                postLogger: true
-        - id: cafe-svc
-          uri: http://localhost:8082/
-          predicates:
-            - Path=/cafe/**
-          filters:
-            - name: CafeFilter
-              args:
-                baseMessage: Spring Cloud Gateway CafeFilter
-                preLogger: true
-                postLogger: true
+        routes:
+            -   id: order-service
+                uri: http://localhost:8181
+                predicates:
+                    - Path=/order/**
+                filters:
+                    - RewritePath=/order/(?<path>.*),/$\{path}
+
+            -   id: cart-service
+                uri: http://localhost:8181
+                predicates:
+                    - Path=/cart/**
+                filters:
+                    - RewritePath=/cart/(?<path>.*),/$\{path}
