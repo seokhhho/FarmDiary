@@ -1,16 +1,8 @@
-cloud:
-    gateway:
-        routes:
-            -   id: order-service
-                uri: http://localhost:8181
-                predicates:
-                    - Path=/order/**
-                filters:
-                    - RewritePath=/order/(?<path>.*),/$\{path}
-
-            -   id: cart-service
-                uri: http://localhost:8181
-                predicates:
-                    - Path=/cart/**
-                filters:
-                    - RewritePath=/cart/(?<path>.*),/$\{path}
+zuul:
+  routes:
+    service-1:
+      path: /service-1/**
+      url: http://localhost:8081
+    service-2:
+      path: /service-2/**
+      url: http://localhost:8082
