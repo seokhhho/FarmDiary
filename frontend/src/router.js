@@ -10,6 +10,9 @@ import CreateBoard from "./views/CreateBoard.vue";
 import ReadBoard from "./views/ReadBoard.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
+import Sharing from "./views/Sharing.vue";
+import CreateSharing from "./views/CreateSharing.vue";
+import ReadSharing from "./views/ReadSharing.vue";
 
 Vue.use(Router);
 
@@ -90,6 +93,38 @@ export default new Router({
         footer: { backgroundColor: "black" }
       }
     },
+    {
+      path: "/sharing",
+      name: "sharing",
+      components: { default: Sharing, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 200 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/createSharing",
+      name: "createSharing",
+      components: {
+        default: CreateSharing,
+        header: MainNavbar,
+        footer: MainFooter
+      },
+      props: {
+        header: { colorOnScroll: 200 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/sharing/:id",
+      name: "readSharing",
+      components: { default: ReadSharing, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 200 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    
   ],
   scrollBehavior: to => {
     if (to.hash) {

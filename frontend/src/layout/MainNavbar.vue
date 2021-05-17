@@ -7,9 +7,11 @@
     :color-on-scroll="colorOnScroll"
   >
     <div class="md-toolbar-row md-collapse-lateral">
+      <router-link  to="/">
       <div class="md-toolbar-section-start">
         <h3 class="md-title">Farm Diary</h3>
       </div>
+      </router-link>
       <div class="md-toolbar-section-end">
         <md-button
           class="md-just-icon md-simple md-toolbar-toggle"
@@ -51,10 +53,10 @@
                         </li>
                         <li>
                           <a
-                            href="https://demos.creative-tim.com/vue-material-kit/documentation/"
+                            href=""
                           >
                             <i class="material-icons">content_paste</i>
-                            <p>Documentation</p>
+                            <p>병해충 진단</p>
                           </a>
                         </li>
                       </ul>
@@ -64,21 +66,21 @@
               </li>
 
               <md-list-item
-                href="https://demos.creative-tim.com/vue-material-kit/documentation/"
+                href=""
                 target="_blank"
                 v-if="showDownload"
               >
-                <i class="material-icons">content_paste</i>
-                <p>Documentation</p>
+                <!-- <i class="material-icons">content_paste</i> -->
+                <p>병해충 진단</p>
               </md-list-item>
 
               <md-list-item
-                href="javascript:void(0)"
-                @click="scrollToElement()"
+                href=""
+                target="_blank"
                 v-if="showDownload"
               >
-                <i class="material-icons">cloud_download</i>
-                <p>Download</p>
+                <!-- <i class="material-icons">cloud_download</i> -->
+                <p>농작물 나눔</p>
               </md-list-item>
 
               <li class="md-list-item" v-else>
@@ -121,36 +123,6 @@
                 </a>
               </li>
 
-              <md-list-item
-                href="https://twitter.com/CreativeTim"
-                target="_blank"
-              >
-                <i class="fab fa-twitter"></i>
-                <p class="hidden-lg">Twitter</p>
-                <md-tooltip md-direction="bottom"
-                  >Follow us on Twitter</md-tooltip
-                >
-              </md-list-item>
-              <md-list-item
-                href="https://www.facebook.com/CreativeTim"
-                target="_blank"
-              >
-                <i class="fab fa-facebook-square"></i>
-                <p class="hidden-lg">Facebook</p>
-                <md-tooltip md-direction="bottom"
-                  >Like us on Facebook</md-tooltip
-                >
-              </md-list-item>
-              <md-list-item
-                href="https://www.instagram.com/CreativeTimOfficial"
-                target="_blank"
-              >
-                <i class="fab fa-instagram"></i>
-                <p class="hidden-lg">Instagram</p>
-                <md-tooltip md-direction="bottom"
-                  >Follow us on Instagram</md-tooltip
-                >
-              </md-list-item>
             </md-list>
           </div>
         </div>
