@@ -10,45 +10,15 @@
           <div class="md-layout">
             <div class="md-layout-item md-size-50 mx-auto"></div>
           </div>
-          <!-- <div v-for="(item, index) in list" :key="index">
-            dsf{{ item.title }}
-          </div>
-          <div>gdgdg {{ title }}</div>
-          <br /><br /><br /><br /><br /><br /> -->
+
           <div id="board">
-            <h2 style="text-align:center">자유 게시판</h2>
+            <h2 style="text-align:center">나눔 게시판</h2>
             <div style="text-align:right">
             <v-btn @click="create">글 작성</v-btn>
             </div>
-            <v-simple-table>
-              <template v-slot:default>
-                <thead>
-                  <tr>
-                    <!-- <th class="text-left">no</th> -->
-                    <th class="text-left">제목</th>
-                    <th class="text-left">아이디</th>
-                    <th class="text-left">날짜</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="item in list" :key="item.name" @click="read(item.id)">
-                    <!-- <td>1</td> -->
-                    <td>{{ item.title }}</td>
-                    <td>하이룽</td>
-                    <td>{{ item.date }}</td>
-                  </tr>
-                </tbody>
-              </template>
-            </v-simple-table>
+
           </div>
         </div>
-        <!-- <pagination
-            class="pagination-info"
-            v-model="infoPagination"
-            with-text
-            :page-count="5"
-          >
-          </pagination> -->
         
           <v-app id="inspire">
             <div class="text-center">
@@ -136,11 +106,12 @@ export default {
     },
 
     create() {
-      this.$router.push('createBoard');
+      this.$router.push('createSharing');
+      
     },
     read(id){
       // alert("sdf");
-      this.$router.push('Board/'+id);
+      this.$router.push('Sharing/'+id);
 
     }
   },
@@ -173,7 +144,6 @@ export default {
     }
   }
 
-  #board {
-  }
+
 }
 </style>

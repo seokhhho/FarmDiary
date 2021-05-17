@@ -4,20 +4,20 @@
       <div class="md-layout">
         <div class="md-layout-item">
           <div class="image-wrapper">
-            <img :src="leaf4" alt="leaf4" class="leaf4" v-show="leafShow" />
+            <!-- <img :src="leaf4" alt="leaf4" class="leaf4" v-show="leafShow" />
             <img :src="leaf3" alt="leaf3" class="leaf3" v-show="leafShow" />
             <img :src="leaf2" alt="leaf2" class="leaf2" v-show="leafShow" />
-            <img :src="leaf1" alt="leaf1" class="leaf1" v-show="leafShow" />
+            <img :src="leaf1" alt="leaf1" class="leaf1" v-show="leafShow" /> -->
             <div class="brand">
-              <h1>Farm Diary</h1>
-              <h3>도시농부들을 위한 길라잡이</h3>
+              <!-- <h1>Farm Diary</h1> -->
+              <!-- <h3>도시농부들을 위한 길라잡이</h3> -->
             </div>
           </div>
         </div>
       </div>
     </parallax>
 
-    <div class="main main-raised">
+    <div class="main main-raised" style="padding-bottom:100px;margin-top:0px">
       <br /><br /><br />
       <div id="testBugMark">
         <div class="tim-typo">
@@ -44,7 +44,13 @@
         </span>
       </div>
       <div id="weather">
-        <v-img :src="weatherImg" height="150px" width="120px"></v-img>
+        
+        <h3>오늘의 날씨</h3>
+        <!-- <v-img :src="weatherImg" height="200px" width="150px"></v-img> -->
+        <!-- <i class="wi wi-day-sunny" style="width:150px"></i> -->
+         <!-- <i class="wi wi-owm-200 width:500px"></i>
+          -->
+        <vue-weather api-key="8b2333e996db9ac6859d281721dd4987" units="uk" />
       </div>
       <v-simple-table style="margin-top:130px;width:50%;margin-left:2%">
         <colgroup>
@@ -60,12 +66,14 @@
           </tr>
         </tbody>
       </v-simple-table>
+       
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import VueWeather from "vue-weather-widget";
 // import Navigation from "./components/NavigationSection";
 // import SmallNavigation from "./components/SmallNavigationSection";
 // import Tabs from "./components/TabsSection";
@@ -87,13 +95,14 @@ export default {
     // JavascriptComponents,
     // LoginCard
     // Badge
+    VueWeather
   },
   name: 'index',
   bodyClass: 'index-page',
   props: {
     image: {
       type: String,
-      default: require('@/assets/img/vue-mk-header.jpg'),
+      default: require('@/assets/img/facebook_cover_photo_2.png'),
     },
     leaf4: {
       type: String,
@@ -256,6 +265,9 @@ export default {
 
 #weather {
   float: right;
-  margin-top: 30px;
+  margin-top: 50px;
+   margin-right:5%;
+  width:40%;
+  height:200px;
 }
 </style>
