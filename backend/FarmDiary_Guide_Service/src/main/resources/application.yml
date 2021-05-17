@@ -1,0 +1,13 @@
+# spring
+spring:
+  data:
+    mongodb:
+#      uri: mongodb://k4a305.p.ssafy.io:27017/tutorial
+       uri: mongodb://localhost:27017/test2
+# mongodb
+mongodb:
+  test:
+    connectionString: mongodb://localhost:27017/test2
+    
+server:
+  port: 8877
