@@ -1,7 +1,7 @@
 zuul:
   routes:
     service-1:
-      path: /service-1/**
+      path: /user-service/**
       url: http://localhost:8899
     service-2:
       path: /service-2/**
