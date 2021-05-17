@@ -2,7 +2,7 @@ board:
     path: /**
     url: http://localhost:8088
 reply:
-    path: /reply/**
+    path: /**
     url: http://localhost:8088
 sharing:
     path: /sharing/**
