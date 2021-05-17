@@ -8,6 +8,10 @@ import Profile from "./views/Profile.vue";
 import Board from "./views/Board.vue";
 import CreateBoard from "./views/CreateBoard.vue";
 import ReadBoard from "./views/ReadBoard.vue";
+import Guide from "./views/Guide.vue";
+import Crop from "./views/Crop.vue";
+import Pests from "./views/Pests.vue";
+import PestsDetail from "./views/PestsDetail.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 
@@ -87,6 +91,42 @@ export default new Router({
       components: { default: ReadBoard, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 200 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/guide",
+      name: "guide",
+      components: { default: Guide, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/crop/:cropName",
+      name: "crop",
+      components: { default: Crop, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/pests",
+      name: "pests",
+      components: { default: Pests, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/pestsDetail/:pestName",
+      name: "pestsDetail",
+      components: { default: PestsDetail, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
       }
     },
