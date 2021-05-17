@@ -32,7 +32,7 @@ public class FilesController {
 	 @PostMapping("/upload")
 	  public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
 	    String message = "";
-
+	    System.out.println(file + "이다");
 	    String name = file.getOriginalFilename();
 	    int dot = name.lastIndexOf(".");
 	    String ext = name.substring(dot);

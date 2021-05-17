@@ -1,6 +1,3 @@
-user-service:
-    path: /user-service/**
-    url: http://localhost:8899
-service-2:
-    path: /service-2/**
-    url: http://localhost:8082
+LSH:
+    path: /LSH/**
+    url: http://localhost:8088

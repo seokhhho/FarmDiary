@@ -83,6 +83,7 @@ export default {
       };
       const frm = new FormData();
       var img = document.getElementById('img');
+      console.log("사진" + img.files[0]);
       if (img.files.length != 0) {
         frm.append('file', img.files[0]);
         axios
