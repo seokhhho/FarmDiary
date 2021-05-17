@@ -14,6 +14,9 @@ import Pests from "./views/Pests.vue";
 import PestsDetail from "./views/PestsDetail.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
+import Sharing from "./views/Sharing.vue";
+import CreateSharing from "./views/CreateSharing.vue";
+import ReadSharing from "./views/ReadSharing.vue";
 
 Vue.use(Router);
 
@@ -104,11 +107,33 @@ export default new Router({
       }
     },
     {
+      path: "/sharing",
+      name: "sharing",
+      components: { default: Sharing, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 200 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
       path: "/crop/:cropName",
       name: "crop",
       components: { default: Crop, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/createSharing",
+      name: "createSharing",
+      components: {
+        default: CreateSharing,
+        header: MainNavbar,
+        footer: MainFooter
+      },
+      props: {
+        header: { colorOnScroll: 200 },
         footer: { backgroundColor: "black" }
       }
     },
@@ -130,6 +155,16 @@ export default new Router({
         footer: { backgroundColor: "black" }
       }
     },
+    {
+      path: "/sharing/:id",
+      name: "readSharing",
+      components: { default: ReadSharing, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 200 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    
   ],
   scrollBehavior: to => {
     if (to.hash) {
