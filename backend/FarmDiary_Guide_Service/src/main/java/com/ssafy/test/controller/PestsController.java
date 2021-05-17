@@ -29,16 +29,12 @@ public class PestsController {
 	
 	@GetMapping("/{cropName}")
 	public ResponseEntity<List<Pests>> searchPests(@PathVariable("cropName") String cropName) throws Exception{
-		System.out.println(cropName);
-		System.out.println(pestsRepository.findByCropName(cropName));
 		return new ResponseEntity<List<Pests>>(pestsRepository.findByCropName(cropName), HttpStatus.OK);
 	}
 	
-	@GetMapping("/detail/{pestName}")
-	public ResponseEntity<Pests> searchCrop(@PathVariable("pestName") String pestName) throws Exception{
-		System.out.println(pestName);
-		System.out.println(pestsRepository.findByPestName(pestName));
-		return new ResponseEntity<Pests>(pestsRepository.findByPestName(pestName), HttpStatus.OK);
+	@GetMapping("/detail/{cropName}/{pestName}")
+	public ResponseEntity<List<Pests>> searchCrop(@PathVariable("pestName") String pestName, @PathVariable("cropName") String cropName) throws Exception{
+		return new ResponseEntity<List<Pests>>(pestsRepository.findByPestNameAndCropName(pestName,cropName), HttpStatus.OK);
 	}
 	
 }

@@ -7,6 +7,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface GuideRepository extends MongoRepository<Guide, String> {
 	public List<Guide> findByPlace(String place);
-	public List<Guide> readByPlace(String place);
-	public Guide findByName(String name);
+	public List<Guide> findByName(String name);
 }

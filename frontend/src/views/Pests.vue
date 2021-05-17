@@ -26,13 +26,13 @@
             <div class="md-layout-item md-size-25 md-xsmall-size-100" v-for="pest in pestslist" v-bind:key="pest">
                 <div class="avatar">
                   <img
-                    :src="img"
+                    :src="require(`@/assets/img/${cropName}/${pest.pestName}.jpg`)"
                     alt="Rounded Image"
                     class="rounded"
                   />
                 </div>
                 <div class="md-layout-item text-center">
-                    <md-button href="#/pestsDetail/검은무늬병" class="md-simple md-success md-lg">
+                    <md-button @click="move(pest.pestName)" class="md-simple md-success md-lg">
                     {{pest.pestName}}
                     </md-button>
                 </div>
@@ -71,18 +71,16 @@ export default {
       })
         .then(res => {
           this.pestslist = [];
-          console.log(res.data);
           for(var i=0; i<res.data.length;i++) {
             this.pestslist.push(res.data[i]);
-            console.log(res.data[i]);
-          }
-          for(var i=0; i<res.data.length;i++) {
-            console.log(this.pestslist[i]);
           }
         })
         .catch(error => {
           console.log(error);
         });
+    },
+    move(pestName) {
+      this.$router.push('pestsDetail/'+this.cropName+'/'+pestName);
     },
   },
   props: {

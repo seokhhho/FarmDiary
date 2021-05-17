@@ -147,7 +147,7 @@ export default new Router({
       }
     },
     {
-      path: "/pestsDetail/:pestName",
+      path: "/pestsDetail/:cropName/:pestName",
       name: "pestsDetail",
       components: { default: PestsDetail, header: MainNavbar, footer: MainFooter },
       props: {

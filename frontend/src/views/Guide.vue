@@ -32,13 +32,13 @@
               <div class="md-layout-item md-size-25 md-xsmall-size-100" v-for="crop in cropslist" v-bind:key="crop">
                 <div class="avatar">
                   <img
-                    :src="img"
+                    :src="require(`@/assets/img/${crop.name}.jpg`)"
                     alt="Rounded Image"
                     class="rounded"
                   />
                 </div>
                 <div class="md-layout-item text-center">
-                    <md-button href="#/crop/고구마" class="md-simple md-success md-lg">
+                    <md-button @click="move(crop.name)" class="md-simple md-success md-lg">
                     {{crop.name}}
                     </md-button>
                 </div>
@@ -64,7 +64,6 @@ export default {
     return {
       cropslist:[],
       place: ["베란다", "옥상정원", "주말농장"],
-      len:0,
     };
   },
   methods: {
@@ -79,14 +78,15 @@ export default {
           for(var i=0; i<res.data.length;i++) {
             this.cropslist.push(res.data[i]);
           }
-          this.len = res.data.length;
-          console.log(this.cropslist);
           
         })
         .catch(error => {
           console.log(error);
         });
 
+    },
+    move(crop) {
+      this.$router.push('crop/'+crop);
     },
   },
   props: {
