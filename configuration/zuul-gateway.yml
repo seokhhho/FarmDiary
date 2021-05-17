@@ -1,5 +1,5 @@
 board:
-    path: /board/**
+    path: /**
     url: http://localhost:8088
 reply:
     path: /reply/**
