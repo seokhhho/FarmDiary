@@ -1,6 +1,6 @@
 user-service:
     path: /user-service/**
-    url: http://localhost:8899
+    url: http://localhost:8088
 service-2:
     path: /service-2/**
     url: http://localhost:8082
