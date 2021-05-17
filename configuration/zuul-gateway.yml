@@ -1,12 +1,3 @@
-board:
-    path: /**
-    url: http://localhost:8088
-reply:
-    path: /**
-    url: http://localhost:8088
-sharing:
-    path: /sharing/**
-    url: http://localhost:8088
-file:
-    path: /file/**
+LSH:
+    path: /LSH/**
     url: http://localhost:8088
