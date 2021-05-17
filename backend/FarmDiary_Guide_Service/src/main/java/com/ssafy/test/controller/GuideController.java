@@ -31,22 +31,12 @@ public class GuideController {
 	
 	@GetMapping("/{place}")
 	public ResponseEntity<List<Guide>> searchCrops(@PathVariable("place") String place) throws Exception{
-		System.out.println(place);
-		
-		Guide guide1 = new Guide("1", "2","3","4","5","6","7","8");
-		
-		guideRepository.insert(Arrays.asList(guide1));
-		System.out.println(guideRepository.readByPlace("2"));
-		
-		System.out.println(guideRepository.findAll());
-		return new ResponseEntity<List<Guide>>(guideRepository.findByPlace("2"), HttpStatus.OK);
+		return new ResponseEntity<List<Guide>>(guideRepository.findByPlace(place), HttpStatus.OK);
 	}
 	
 	@GetMapping("/crop/{name}")
-	public ResponseEntity<Guide> searchCrop(@PathVariable("name") String name) throws Exception{
-		System.out.println(name);
-		System.out.println(guideRepository.findByName(name));
-		return new ResponseEntity<Guide>(guideRepository.findByName(name), HttpStatus.OK);
+	public ResponseEntity<List<Guide>> searchCrop(@PathVariable("name") String name) throws Exception{
+		return new ResponseEntity<List<Guide>>(guideRepository.findByName(name), HttpStatus.OK);
 	}
 	
 }

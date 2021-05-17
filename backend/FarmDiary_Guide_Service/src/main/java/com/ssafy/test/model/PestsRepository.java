@@ -7,5 +7,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface PestsRepository extends MongoRepository<Pests, String> {
 	public List<Pests> findByCropName(String cropName);
-	public Pests findByPestName(String pestName);
+	public List<Pests> findByPestNameAndCropName(String pestName, String cropName);
 }
