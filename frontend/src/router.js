@@ -12,6 +12,7 @@ import Guide from "./views/Guide.vue";
 import Crop from "./views/Crop.vue";
 import Pests from "./views/Pests.vue";
 import PestsDetail from "./views/PestsDetail.vue";
+import PestsDiagnosis from "./views/PestsDiagnosis.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import Sharing from "./views/Sharing.vue";
@@ -141,6 +142,15 @@ export default new Router({
       path: "/pests",
       name: "pests",
       components: { default: Pests, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/pestsDiagnosis",
+      name: "pestsDiagnosis",
+      components: { default: PestsDiagnosis, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }

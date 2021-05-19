@@ -2,12 +2,11 @@
 spring:
   data:
     mongodb:
-#      uri: mongodb://k4a305.p.ssafy.io:27017/tutorial
-       uri: mongodb://localhost:27017/test
+      uri: mongodb://k4a305.p.ssafy.io:27017/27017
 # mongodb
 mongodb:
   test:
-    connectionString: mongodb://localhost:27017/test
+    connectionString: mongodb://k4a305.p.ssafy.io:27017/27017
     
 server:
   port: 8877

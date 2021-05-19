@@ -7,15 +7,15 @@
     <div class="main main-raised">
       <div class="md-layout">
         <div
-          class="md-layout-item md-size-25 md-xsmall-size-100 md-small-size-50 md-medium-size-25 "
+          class="md-layout-item md-size-25 mx-auto"
         >
           <md-field>
             <label>Search</label>
             <md-input v-model="cropName" type="text"></md-input>
           </md-field>
-        </div>
         <md-button class="md-success" @click="getPestsList(cropName)">Search</md-button>
-      </div>
+        </div>
+      </div>  
       <h2 class="text-center">
         {{name}}
       </h2>
@@ -88,10 +88,6 @@ export default {
       type: String,
       default: require("@/assets/img/city-profile.jpg")
     },
-    img: {
-      type: String,
-      default: require("@/assets/img/고구마/검은무늬병.jpg")
-    },
   },
   computed: {
     headerStyle() {
@@ -107,7 +103,9 @@ export default {
 .section {
   padding: 0;
 }
-.avatar {
+.rounded {
+  width: 300px;
+  height: 150px;
   object-fit: fill;
 }
 </style>

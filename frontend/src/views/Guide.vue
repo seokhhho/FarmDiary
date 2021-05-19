@@ -68,7 +68,6 @@ export default {
   },
   methods: {
     getCropsList(place) {
-      console.log(place);
       axios({
         method: "get",
         url: `${SERVER_URL}/guide/${place}/`
@@ -94,10 +93,6 @@ export default {
       type: String,
       default: require("@/assets/img/city-profile.jpg")
     },
-    img: {
-      type: String,
-      default: require("@/assets/img/faces/christian.jpg")
-    }
   },
   computed: {
     headerStyle() {
@@ -105,6 +100,9 @@ export default {
         backgroundImage: `url(${this.header})`
       };
     }
+  },
+  created() {
+    this.getCropsList(this.place[0]);
   }
 };
 </script>
@@ -112,5 +110,10 @@ export default {
 <style lang="scss" scoped>
 .section {
   padding: 0;
+}
+.rounded {
+  width: 300px;
+  height: 150px;
+  object-fit: fill;
 }
 </style>

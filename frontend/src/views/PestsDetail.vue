@@ -104,4 +104,9 @@ export default {
 .section {
   padding: 0;
 }
+.rounded {
+  width: 300px;
+  height: 150px;
+  object-fit: fill;
+}
 </style>
