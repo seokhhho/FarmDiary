@@ -12,7 +12,7 @@ import java.util.Map;
 import javax.sql.rowset.serial.SerialBlob;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang3.RandomStringUtils;
+//import org.apache.commons.lang3.RandomStringUtils;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

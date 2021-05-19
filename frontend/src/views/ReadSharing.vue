@@ -11,6 +11,11 @@
             <div class="md-layout-item md-size-50 mx-auto">
               <div style="text-align:center"></div>
             </div>
+
+            <br />
+            <div style="width:90%;text-align:center;margin-top:20px">
+              <h2>{{ board.title }}</h2>
+            </div>
             <!-- </div> -->
             <!-- <img :src="board.img" > -->
             <div id="detailContents">
@@ -26,9 +31,9 @@
                       :src="item"
                     ></v-carousel-item>
                   </v-carousel>
-                  <h2 style="padding-top:90px">{{ board.title }}</h2>
+                  <!-- <h2 style="padding-top:90px">{{ board.title }}</h2> -->
               
-              <div style="margin-bottom:20px">
+              <div style="margin-bottom:0px ; padding-top:90px">
                 {{ board.contents }}
               </div>
                 </v-app>
@@ -38,7 +43,7 @@
               <!-- </div> -->
               
             </div>
-            <p style="width:90%;">
+            <!-- <p style="width:90%;"> -->
               <!-- <v-btn
                 style="width:10%; margin-left:79%;margin-top:10px;margin-right:20px"
                 >수정</v-btn
@@ -46,7 +51,8 @@
               <v-btn style="width:10%; margin-left:90%;margin-top:-60px"
                 >삭제</v-btn
               > -->
-            </p>
+            <!-- </p> -->
+            <div style="margin-top:-130px">
             <div v-for="(item, index) in reply" :key="item.id" id="reply">
               <div @click="openText(index)" style="cursor:pointer">
                 <div>{{ item.text }}</div>
@@ -85,7 +91,7 @@
               </div>
             </div>
 
-            <div id="app" style="width:92%;margin-left:-14px">
+            <div id="app" style="width:100%;margin-left:-14px">
               <v-container fluid>
                 <v-textarea
                   label="댓글달기"
@@ -104,6 +110,7 @@
               </v-container>
             </div>
           </div>
+          </div>
         </div>
       </div>
     </div>
@@ -112,7 +119,7 @@
 
 <script>
 import axios from 'axios';
-const SERVER_URL = process.env.VUE_APP_SERVER_URL;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
 export default {
   data() {
     return {
@@ -254,8 +261,9 @@ export default {
 }
 #detailContents {
   border-bottom: 1px solid grey;
-  // border-top: 1px solid grey;
+  border-top: 1px solid grey;
   width: 90%;
+  margin-bottom: 200px;
   // height: 400px;
 }
 #reply {

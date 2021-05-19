@@ -21,13 +21,16 @@
       <br /><br /><br />
       <div id="testBugMark">
         <div class="tim-typo">
-          <h4 class="title" style="font-size:17px;margin-left:;margin-top:2.5%">
+          <div class="title" style="font-size:18px;width:400px;margin-left:-20%;margin-top:30px">
             당신의 텃밭작물을 AI를 통해 진단 받으세요!
-          </h4>
-        </div>
-        <v-btn id ="bugBtn"
+          </div>
+          <v-btn id ="bugBtn" style="margin-left:97%;margin-top:-118px"
           >진단받기</v-btn
         >
+        </div>
+        <!-- <v-btn id ="bugBtn" style=""
+          >진단받기</v-btn
+        > -->
       </div>
 
       <div id="bugTable">
@@ -42,7 +45,7 @@
         </span>
       </div>
       <div id="weather">
-        <h3>오늘의 날씨</h3>
+        <h3>날씨 정보</h3>
         <!-- <v-img :src="weatherImg" height="200px" width="150px"></v-img> -->
         <!-- <i class="wi wi-day-sunny" style="width:150px"></i> -->
         <!-- <i class="wi wi-owm-200 width:500px"></i>
@@ -64,14 +67,8 @@
         </tbody>
       </v-simple-table>
       <h3 style="margin-left:3%;padding-right:70%;margin-top:70px">나눔 게시판 </h3>
-      <div @click="goToSharing()" style="margin-top:-30px ; margin-left:45% ; cursor:pointer ;">더보기</div>
-      <!-- <v-img
-        :src="list[0].img[0]"
-        height="220"
-        width="220"
-        style="border-radius:20px"
-      >
-      </v-img> -->
+      <div @click="goToSharing()" style="margin-top:-30px ; margin-left:42% ; cursor:pointer ;">더보기</div>
+
       <v-carousel
       :show-arrows="false"
         style="border-radius:30px;width:40%;margin-left:5%;margin-top:30px;height:400px;border: 0.1rem solid grey; "
@@ -79,11 +76,27 @@
         <v-carousel-item
           v-for="n in 5"
           :key="n"
-          :src="list[n].img[0]"
-          @click="goToReadSharing(list[n].id)"
+          :src="list[n-1].img[0]"
+          @click="goToReadSharing(list[n-1].id)"
           style="cursor:pointer ;"
         ></v-carousel-item>
       </v-carousel>
+      <div style="margin-top:-540px;margin-left:53%">
+      <h3 style="margin-left:3%;margin-top:70px">오늘의 텃밭 소식 </h3>
+      <div @click="goToBoard()" style="margin-top:-30px ; margin-left:77% ; cursor:pointer ;">더보기</div>
+      <v-carousel
+      :show-arrows="false"
+        style="border-radius:30px;width:80%;margin-left:5%;margin-top:30px;height:400px;border: 0.1rem solid grey; "
+      >
+        <v-carousel-item
+          v-for="n in 1"
+          :key="n"
+          :src="list2[n-1].img"
+          @click="goToReadBoard(list2[n-1].id)"
+          style="cursor:pointer ;"
+        ></v-carousel-item>
+      </v-carousel>
+      </div>
     </div>
   </div>
 </template>
@@ -100,7 +113,7 @@ import VueWeather from 'vue-weather-widget';
 // import JavascriptComponents from "./components/JavascriptComponentsSection";
 // import { LoginCard } from "@/components";
 // import { Badge } from "@/components";
-const SERVER_URL = process.env.VUE_APP_SERVER_URL;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
 export default {
   components: {
     // Navigation,
@@ -158,6 +171,7 @@ export default {
       leafShow: false,
       weatherImg: '',
       list: [],
+      list2: [],
       page: 1,
       bugInfo: [
         {
@@ -182,6 +196,7 @@ export default {
   created() {
     this.readWeather();
     this.readSharing();
+    this.readBoard();
   },
   methods: {
     leafActive() {
@@ -219,6 +234,9 @@ export default {
     goToSharing() {
       this.$router.push('sharing');
     },
+     goToBoard() {
+      this.$router.push('board');
+    },
 
     async readSharing() {
       try {
@@ -236,8 +254,31 @@ export default {
         console.log(err);
       }
     },
+
+    async readBoard() {
+      console.log('sdfsd');
+      try {
+        const res = await axios.get(`${SERVER_URL}/board/read`, {
+          params: { type: '', word: this.page },
+        });
+        this.list2 = res.data;
+        console.log(res.data[1].title + '?');
+        // this.hashKey = res.data.vote.hashKey;
+        // const idx = res.data.vote.contractAddress * 1;
+        // await this.getData(idx);
+
+        // this.n = idx;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
     goToReadSharing(id){
       this.$router.push('Sharing/'+id);
+    },
+
+    goToReadBoard(id){
+      this.$router.push('Board/'+id);
     },
   },
   computed: {
@@ -280,7 +321,7 @@ export default {
   width: 50%;
   margin-left: 26%;
   // margin-top: 100px;
-  height: 50px;
+  height: 80px;
   border-radius: 100px;
 }
 
@@ -316,9 +357,10 @@ export default {
 }
 
 #bugBtn{
-  font-size:17px;
-  margin-right:4%;
-  margin-top:0.8%; 
+  font-size:25px;
+  // margin: right -300px;;
+  // padding-right:-300px;
+  // margin-top:0.9%; 
   background-color:#cddbdb;
 }
 </style>8

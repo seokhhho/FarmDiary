@@ -10,7 +10,7 @@
           <div class="md-layout">
             <div class="md-layout-item md-size-50 mx-auto">
               <div style="text-align:center">
-                <h2>나눔 글쓰기</h2>
+                <h2>전원일기 글쓰기</h2>
               </div>
             </div>
             <!-- <div>gdgdg</div> -->
@@ -58,7 +58,7 @@
 
 <script>
 import axios from 'axios';
-const SERVER_URL = process.env.VUE_APP_SERVER_URL;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
 export default {
   data() {
     return {
@@ -94,7 +94,7 @@ export default {
       if (img.files.length != 0) {
         frm.append('file', img.files[0]);
         axios
-          .post(`${SERVER_URL}/file/upload/`, frm)
+          .post(`${SERVER_URL}/file/uploadBrd/`, frm)
           .then((res) => {
             // console.log(res.data.message)
             // item.push({img: SERVER_URL + "/file/read/" + res.data.message})

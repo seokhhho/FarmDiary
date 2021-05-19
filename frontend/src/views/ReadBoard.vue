@@ -33,7 +33,7 @@
               >
               <v-btn style="width:10%; margin-left:90%;margin-top:-60px"
                 >삭제</v-btn -->
-              >
+              
             </p>
             <div v-for="(item,index) in reply" :key="item.id" id="reply">
               <div @click="openText(index)" style="cursor:pointer">
@@ -94,7 +94,7 @@
 
 <script>
 import axios from 'axios';
-const SERVER_URL = process.env.VUE_APP_SERVER_URL;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
 export default {
   data() {
     return {
@@ -121,8 +121,8 @@ export default {
     },
   },
   created() {
-    this.readBoard();
-    this.readReply();
+    // this.readBoard();
+    // this.readReply();
   },
   methods: {
     async readBoard() {
