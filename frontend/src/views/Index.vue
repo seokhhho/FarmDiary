@@ -222,7 +222,7 @@ export default {
 
     async readSharing() {
       try {
-        const res = await axios.get(`${SERVER_URL}/sharing/read`, {
+        const res = await axios.get(`${SERVER_URL}/LSH/sharing/read`, {
           params: { type: '', word: this.page },
         });
         this.list = res.data;

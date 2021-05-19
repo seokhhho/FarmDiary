@@ -7,10 +7,10 @@
     :color-on-scroll="colorOnScroll"
   >
     <div class="md-toolbar-row md-collapse-lateral">
-      <router-link  to="/">
-      <div class="md-toolbar-section-start">
-        <h3 class="md-title">Farm Diary</h3>
-      </div>
+      <router-link to="/">
+        <div class="md-toolbar-section-start">
+          <h3 class="md-title">Farm Diary</h3>
+        </div>
       </router-link>
       <div class="md-toolbar-section-end">
         <md-button
@@ -29,7 +29,7 @@
               <!-- Here you can add your items from the section-start of your toolbar -->
             </mobile-menu>
             <md-list>
-              <li class="md-list-item" v-if="!showDownload">
+              <li class="md-list-item">
                 <a
                   href="javascript:void(0)"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
@@ -42,21 +42,25 @@
                         data-toggle="dropdown"
                       >
                         <i class="material-icons">apps</i>
-                        <p>Components</p>
+                        <p>menu</p>
                       </md-button>
                       <ul class="dropdown-menu dropdown-with-icons">
                         <li>
                           <a href="#/">
-                            <i class="material-icons">layers</i>
-                            <p>All Components</p>
+                            <i class="material-icons">search</i>
+                            <p>병해충 진단</p>
                           </a>
                         </li>
                         <li>
-                          <a
-                            href=""
-                          >
-                            <i class="material-icons">content_paste</i>
-                            <p>병해충 진단</p>
+                          <a href="#/">
+                            <i class="material-icons">shopping_cart</i>
+                            <p>농작물 나눔</p>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#/">
+                            <i class="material-icons">article</i>
+                            <p>가이드</p>
                           </a>
                         </li>
                       </ul>
@@ -64,26 +68,7 @@
                   </div>
                 </a>
               </li>
-
-              <md-list-item
-                href=""
-                target="_blank"
-                v-if="showDownload"
-              >
-                <!-- <i class="material-icons">content_paste</i> -->
-                <p>병해충 진단</p>
-              </md-list-item>
-
-              <md-list-item
-                href=""
-                target="_blank"
-                v-if="showDownload"
-              >
-                <!-- <i class="material-icons">cloud_download</i> -->
-                <p>농작물 나눔</p>
-              </md-list-item>
-
-              <li class="md-list-item" v-else>
+              <li class="md-list-item">
                 <a
                   href="javascript:void(0)"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
@@ -95,26 +80,38 @@
                         class="md-button md-button-link md-white md-simple dropdown-toggle"
                         data-toggle="dropdown"
                       >
-                        <i class="material-icons">view_carousel</i>
-                        <p>Examples</p>
+                        <i class="material-icons">list</i>
+                        <p>apps</p>
                       </md-button>
                       <ul class="dropdown-menu dropdown-with-icons">
                         <li>
-                          <a href="#/landing">
-                            <i class="material-icons">view_day</i>
-                            <p>Landing Page</p>
+                          <a @click="reload" href="#/">
+                            <i class="material-icons"
+                              ><span class="material-icons">
+                                home
+                              </span></i>
+                            <p>Home</p>
                           </a>
                         </li>
                         <li>
+                          <a href="#/register">
+                            <i class="material-icons"
+                              ><span class="material-icons">
+                                assignment_ind
+                              </span></i>
+                            <p>Signup</p>
+                          </a>
+                        </li>
+                        <li v-if="this.token">
+                          <a @click="onClickLogout" href="">
+                            <i class="material-icons">logout</i>
+                            <p>Logout</p>
+                          </a>
+                        </li>
+                        <li v-else>
                           <a href="#/login">
-                            <i class="material-icons">fingerprint</i>
-                            <p>Login Page</p>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#/profile">
-                            <i class="material-icons">account_circle</i>
-                            <p>Profile Page</p>
+                            <i class="material-icons">login</i>
+                            <p>Login</p>
                           </a>
                         </li>
                       </ul>
@@ -122,7 +119,6 @@
                   </div>
                 </a>
               </li>
-
             </md-list>
           </div>
         </div>
@@ -146,9 +142,10 @@ function resizeThrottler(actualResizeHandler) {
 }
 
 import MobileMenu from "@/layout/MobileMenu";
+
 export default {
   components: {
-    MobileMenu
+    MobileMenu,
   },
   props: {
     type: {
@@ -162,26 +159,27 @@ export default {
           "danger",
           "success",
           "warning",
-          "info"
+          "info",
         ].includes(value);
-      }
+      },
     },
     colorOnScroll: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   data() {
     return {
       extraNavClasses: "",
-      toggledClass: false
+      toggledClass: false,
+      token: localStorage.accessToken,
     };
   },
   computed: {
     showDownload() {
       const excludedRoutes = ["login", "landing", "profile"];
-      return excludedRoutes.every(r => r !== this.$route.name);
-    }
+      return excludedRoutes.every((r) => r !== this.$route.name);
+    },
   },
   methods: {
     bodyClick() {
@@ -227,13 +225,23 @@ export default {
       if (element_id) {
         element_id.scrollIntoView({ block: "end", behavior: "smooth" });
       }
-    }
+    },
+    onClickLogout() {
+      localStorage.clear();
+      this.$store
+        .dispatch("LOGOUT")
+        .then(() => this.$router.go(this.$router.replace(`/`)));
+    },
+    reload(){
+      this.$router.replace(`/`);
+      location.reload();
+    },
   },
   mounted() {
     document.addEventListener("scroll", this.scrollListener);
   },
   beforeDestroy() {
     document.removeEventListener("scroll", this.scrollListener);
-  }
+  },
 };
 </script>

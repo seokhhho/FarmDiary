@@ -106,7 +106,7 @@ export default {
     async getList() {
       console.log('sdfsd');
       try {
-        const res = await axios.get(`${SERVER_URL}/board/read`, {
+        const res = await axios.get(`${SERVER_URL}/LSH/board/read`, {
           params: { type: '', word: this.page },
         });
         this.list = res.data;
@@ -122,7 +122,7 @@ export default {
     },
     async getTotal() {
       try {
-        const res = await axios.get(`${SERVER_URL}/board/count`);
+        const res = await axios.get(`${SERVER_URL}/LSH/board/count`);
         this.total = res.data;
         console.log("토탈 : " + this.total);
         // this.hashKey = res.data.vote.hashKey;

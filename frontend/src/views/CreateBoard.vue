@@ -102,7 +102,7 @@ export default {
 
             // DB에 저장
             axios
-              .post(`${SERVER_URL}/board/create`, item, {})
+              .post(`${SERVER_URL}/LSH/board/create`, item, {})
               .then((response) => {
                 confirm('작성하시겠습니까?');
                 alert('글쓰기 성공!');
@@ -118,7 +118,7 @@ export default {
       } else {
         // DB에 저장
         axios
-          .post(`${SERVER_URL}/board/create`, item, {})
+          .post(`${SERVER_URL}/LSH/board/create`, item, {})
           .then((response) => {
             confirm('작성하시겠습니까?');
             alert('글쓰기 성공!');

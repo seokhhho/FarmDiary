@@ -18,6 +18,7 @@ import MainFooter from "./layout/MainFooter.vue";
 import Sharing from "./views/Sharing.vue";
 import CreateSharing from "./views/CreateSharing.vue";
 import ReadSharing from "./views/ReadSharing.vue";
+import Register from "./views/Register.vue";
 
 Vue.use(Router);
 
@@ -169,6 +170,15 @@ export default new Router({
       path: "/sharing/:id",
       name: "readSharing",
       components: { default: ReadSharing, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 200 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/register",
+      name: "Register",
+      components: { default: Register, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 200 },
         footer: { backgroundColor: "black" }
