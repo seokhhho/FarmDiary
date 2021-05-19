@@ -16,20 +16,21 @@
             <!-- <div>gdgdg</div> -->
 
             <!-- <div style="width:800px"> -->
-            <p style="width:90%">
+            <div style="width:90%;margin-left:3%">
               <v-text-field
                 label="Title"
                 :rules="rules"
                 hide-details="auto"
                 v-model="title"
+                style="width:90%;margin-left:3%"
               >
               </v-text-field>
-            </p>
-            <!-- </div> -->
-            <br />
-            <!-- <input type="file" id="img" style="margin-left:30px" /> -->
-            <UploadPage></UploadPage>
-            <p style="width:90%;text-align:center;">
+              <div id="app">
+              <!-- <v-app id="inspire"> -->
+                <v-file-input multiple label="사진 업로드" id="img" style="width:20%;margin-left:3%"></v-file-input>
+              <!-- </v-app> -->
+            </div>
+            <p style="width:90%;text-align:center;margin-left:30px">
               <v-textarea
                 solo
                 name="input-7-4"
@@ -40,10 +41,22 @@
               ></v-textarea>
             </p>
             <p style="width:90%;text-align:center">
-              <v-btn @click="create()" style="width:90%; margin-left:0px;"
+              <v-btn @click="create()" style="width:90%; margin-left:4%;"
                 >글쓰기</v-btn
               >
             </p>
+            </div>
+            <!-- </div> -->
+            <br />
+            <!-- <input multiple="multiple" type="file" id="img" style="margin-left:30px" /> -->
+            <!-- <div id="app">
+              <v-app id="inspire">
+                <v-file-input multiple label="File input"></v-file-input>
+              </v-app>
+            </div> -->
+
+            <!-- <UploadPage></UploadPage> -->
+            
           </div>
         </div>
       </div>
@@ -53,7 +66,7 @@
 
 <script>
 import axios from 'axios';
-import UploadPage from "./components/UploadPage.vue";
+// import UploadPage from "./components/UploadPage.vue";
 const SERVER_URL = process.env.VUE_APP_SERVER_URL;
 export default {
   data() {
@@ -61,11 +74,13 @@ export default {
       title: '',
       contents: '',
       form: [],
+      list:[],
+      imgs:[],
     };
   },
 
   components: {
-    UploadPage,
+    // UploadPage,
   },
   bodyClass: 'profile-page',
 
@@ -86,23 +101,31 @@ export default {
         contents: this.contents,
       };
       const frm = new FormData();
-      var img = document.getElementById('img');
-      if (img.files.length != 0) {
-        frm.append('file', img.files[0]);
+      // var img = document.getElementById('img');
+      var ins = document.getElementById('img').files.length;
+      console.log(ins +"sdfsd");
+      if (ins != 0) {
+        for (var x = 0; x < ins; x++) {
+        frm.append("file", document.getElementById('img').files[x]);
+      }
         axios
           .post(`${SERVER_URL}/file/upload/`, frm)
           .then((res) => {
             // console.log(res.data.message)
             // item.push({img: SERVER_URL + "/file/read/" + res.data.message})
-            item['img'] = SERVER_URL + '/file/read/' + res.data.message;
+            this.list = res.data;
 
+            for(var i = 0 ; i < this.list.length ; i++){
+            this.imgs.push(SERVER_URL + '/file/read/' + this.list[i]);
+            }
+            item['img'] = this.imgs;
             // DB에 저장
             axios
-              .post(`${SERVER_URL}/board/create`, item, {})
+              .post(`${SERVER_URL}/sharing/create`, item, {})
               .then((response) => {
                 confirm('작성하시겠습니까?');
                 alert('글쓰기 성공!');
-                this.$router.push('Board');
+                this.$router.push('Sharing');
               })
               .catch(function(error) {console.log(err);});
           })

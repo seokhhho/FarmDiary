@@ -25,9 +25,7 @@
             당신의 텃밭작물을 AI를 통해 진단 받으세요!
           </h4>
         </div>
-        <v-btn
-          style="font-size:17px;margin-right:4%;margin-top:1%;"
-          color="#00bcd4"
+        <v-btn id ="bugBtn"
           >진단받기</v-btn
         >
       </div>
@@ -44,11 +42,10 @@
         </span>
       </div>
       <div id="weather">
-        
         <h3>오늘의 날씨</h3>
         <!-- <v-img :src="weatherImg" height="200px" width="150px"></v-img> -->
         <!-- <i class="wi wi-day-sunny" style="width:150px"></i> -->
-         <!-- <i class="wi wi-owm-200 width:500px"></i>
+        <!-- <i class="wi wi-owm-200 width:500px"></i>
           -->
         <vue-weather api-key="8b2333e996db9ac6859d281721dd4987" units="uk" />
       </div>
@@ -66,14 +63,34 @@
           </tr>
         </tbody>
       </v-simple-table>
-       
+      <h3 style="margin-left:3%;padding-right:70%;margin-top:70px">나눔 게시판 </h3>
+      <div @click="goToSharing()" style="margin-top:-30px ; margin-left:45% ; cursor:pointer ;">더보기</div>
+      <!-- <v-img
+        :src="list[0].img[0]"
+        height="220"
+        width="220"
+        style="border-radius:20px"
+      >
+      </v-img> -->
+      <v-carousel
+      :show-arrows="false"
+        style="border-radius:30px;width:40%;margin-left:5%;margin-top:30px;height:400px;border: 0.1rem solid grey; "
+      >
+        <v-carousel-item
+          v-for="n in 5"
+          :key="n"
+          :src="list[n].img[0]"
+          @click="goToReadSharing(list[n].id)"
+          style="cursor:pointer ;"
+        ></v-carousel-item>
+      </v-carousel>
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import VueWeather from "vue-weather-widget";
+import VueWeather from 'vue-weather-widget';
 // import Navigation from "./components/NavigationSection";
 // import SmallNavigation from "./components/SmallNavigationSection";
 // import Tabs from "./components/TabsSection";
@@ -83,7 +100,7 @@ import VueWeather from "vue-weather-widget";
 // import JavascriptComponents from "./components/JavascriptComponentsSection";
 // import { LoginCard } from "@/components";
 // import { Badge } from "@/components";
-
+const SERVER_URL = process.env.VUE_APP_SERVER_URL;
 export default {
   components: {
     // Navigation,
@@ -95,7 +112,7 @@ export default {
     // JavascriptComponents,
     // LoginCard
     // Badge
-    VueWeather
+    VueWeather,
   },
   name: 'index',
   bodyClass: 'index-page',
@@ -140,6 +157,8 @@ export default {
       password: null,
       leafShow: false,
       weatherImg: '',
+      list: [],
+      page: 1,
       bugInfo: [
         {
           yellow: '(채소-마늘) 뿌리응애 ',
@@ -162,6 +181,7 @@ export default {
   },
   created() {
     this.readWeather();
+    this.readSharing();
   },
   methods: {
     leafActive() {
@@ -194,6 +214,30 @@ export default {
       } catch (err) {
         console.log(err);
       }
+    },
+
+    goToSharing() {
+      this.$router.push('sharing');
+    },
+
+    async readSharing() {
+      try {
+        const res = await axios.get(`${SERVER_URL}/sharing/read`, {
+          params: { type: '', word: this.page },
+        });
+        this.list = res.data;
+        console.log(res.data[1].title + '?');
+        // this.hashKey = res.data.vote.hashKey;
+        // const idx = res.data.vote.contractAddress * 1;
+        // await this.getData(idx);
+
+        // this.n = idx;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    goToReadSharing(id){
+      this.$router.push('Sharing/'+id);
     },
   },
   computed: {
@@ -266,8 +310,15 @@ export default {
 #weather {
   float: right;
   margin-top: 50px;
-   margin-right:5%;
-  width:40%;
-  height:200px;
+  margin-right: 5%;
+  width: 40%;
+  height: 200px;
 }
-</style>
+
+#bugBtn{
+  font-size:17px;
+  margin-right:4%;
+  margin-top:0.8%; 
+  background-color:#cddbdb;
+}
+</style>8
