@@ -31,6 +31,7 @@
         v-model="files"
         ref="upload"
         @input="onDrop()"
+        id='img'
       >
       </FileUpload>
       <v-row>
@@ -67,7 +68,25 @@ export default {
   }),
   methods: {
     onDrop(){
-      console.log(this.files)
+      console.log(this.files);
+      console.log(this.$refs);
+      const frm = new FormData();
+      var img = document.getElementById('img');
+      console.log("사진11" + img);
+      console.log("사진" + img.files[0]);
+      if (img.files.length != 0) {
+        frm.append('file', img.files[0]);
+        axios
+          .post(`${SERVER_URL}/file/upload/`, frm)
+          .then((res) => {
+            // console.log(res.data.message)
+            // item.push({img: SERVER_URL + "/file/read/" + res.data.message})
+            item['img'] = SERVER_URL + '/file/read/' + res.data.message;
+        })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     },
     uploadStart(){
       //업로드 처리로직

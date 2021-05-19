@@ -20,7 +20,25 @@
           </div>
         </div>
         
-          <v-app id="inspire">
+        <div  style="
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          padding-left:17%;
+          padding-right:17%;
+          margin-top:30px;
+        ">
+          <div v-for="item in list" :key="item.name" @click="read(item.id)" style="width:25% ; margin-bottom:50px ; ">
+            <v-img :src="item.img[0]" height="220" width="220" style="border-radius:20px;cursor:pointer;border: 0.1rem solid grey; ">
+            </v-img>
+            <div style="margin-left:100;cursor:pointer ;">
+              {{item.title}}
+            </div>
+          </div>
+
+        </div>
+          <!-- <v-app id="inspire">
             <div class="text-center">
               <v-pagination
                 v-model="page"
@@ -30,7 +48,7 @@
               ></v-pagination>
             </div>
             
-          </v-app>
+          </v-app> -->
         
         
       </div>
@@ -76,7 +94,7 @@ export default {
     async getList() {
       console.log('sdfsd');
       try {
-        const res = await axios.get(`${SERVER_URL}/board/read`, {
+        const res = await axios.get(`${SERVER_URL}/sharing/read`, {
           params: { type: '', word: this.page },
         });
         this.list = res.data;
@@ -92,7 +110,7 @@ export default {
     },
     async getTotal() {
       try {
-        const res = await axios.get(`${SERVER_URL}/board/count`);
+        const res = await axios.get(`${SERVER_URL}/sharing/count`);
         this.total = res.data;
         console.log("토탈 : " + this.total);
         // this.hashKey = res.data.vote.hashKey;

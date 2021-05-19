@@ -27,16 +27,16 @@
               </div>
             </div>
             <p style="width:90%;">
-              <v-btn
+              <!-- <v-btn
                 style="width:10%; margin-left:79%;margin-top:10px;margin-right:20px"
                 >수정</v-btn
               >
               <v-btn style="width:10%; margin-left:90%;margin-top:-60px"
-                >삭제</v-btn
+                >삭제</v-btn -->
               >
             </p>
             <div v-for="(item,index) in reply" :key="item.id" id="reply">
-              <div @click="openText(index)">
+              <div @click="openText(index)" style="cursor:pointer">
                 <div>{{ item.text }}</div>
                 <div style="font-size:7px">{{ item.date }} </div>
                 <div v-for="comment in item.reReply" :key="comment.id" >

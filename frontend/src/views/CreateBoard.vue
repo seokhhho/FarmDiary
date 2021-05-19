@@ -28,6 +28,12 @@
             <!-- </div> -->
             <br />
             <input type="file" id="img" style="margin-left:30px" />
+            <!-- <div id="app">
+              <v-app id="inspire">
+                <v-file-input multiple label="File input" id="img" ></v-file-input>
+              </v-app>
+            </div> -->
+
             <p style="width:90%;text-align:center;margin-top:20px">
               <v-textarea
                 solo
@@ -83,7 +89,8 @@ export default {
       };
       const frm = new FormData();
       var img = document.getElementById('img');
-      console.log("사진" + img.files[0]);
+      console.log('사진11' + img);
+      console.log('사진' + img.files[0]);
       if (img.files.length != 0) {
         frm.append('file', img.files[0]);
         axios
@@ -101,24 +108,27 @@ export default {
                 alert('글쓰기 성공!');
                 this.$router.push('Board');
               })
-              .catch(function(error) {console.log(err);});
+              .catch(function(error) {
+                console.log(err);
+              });
           })
           .catch((err) => {
             console.log(err);
           });
-      }else{
-         // DB에 저장
-            axios
-              .post(`${SERVER_URL}/board/create`, item, {})
-              .then((response) => {
-                confirm('작성하시겠습니까?');
-                alert('글쓰기 성공!');
-                this.$router.push('Board');
-              })
-              .catch(function(error) {console.log(err);});
+      } else {
+        // DB에 저장
+        axios
+          .post(`${SERVER_URL}/board/create`, item, {})
+          .then((response) => {
+            confirm('작성하시겠습니까?');
+            alert('글쓰기 성공!');
+            this.$router.push('Board');
+          })
+          .catch(function(error) {
+            console.log(err);
+          });
       }
-    }
-
+    },
   },
   computed: {
     headerStyle() {

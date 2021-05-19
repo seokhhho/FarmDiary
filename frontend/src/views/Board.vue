@@ -31,7 +31,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="item in list" :key="item.name" @click="read(item.id)">
+                  <tr v-for="item in list" :key="item.name" @click="read(item.id)" style="cursor:pointer ;">
                     <!-- <td>1</td> -->
                     <td>{{ item.title }}</td>
                     <td>하이룽</td>
