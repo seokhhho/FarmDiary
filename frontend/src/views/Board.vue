@@ -16,7 +16,7 @@
           <div>gdgdg {{ title }}</div>
           <br /><br /><br /><br /><br /><br /> -->
           <div id="board">
-            <h2 style="text-align:center">자유 게시판</h2>
+            <h2 style="text-align:center">오늘의 전원일기 게시판</h2>
             <div style="text-align:right">
             <v-btn @click="create">글 작성</v-btn>
             </div>
@@ -71,7 +71,7 @@
 <script>
 import axios from 'axios';
 // import { Pagination } from "@/components";
-const SERVER_URL = process.env.VUE_APP_SERVER_URL;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
 export default {
   components: {
     // Pagination

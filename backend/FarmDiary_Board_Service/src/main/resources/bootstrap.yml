@@ -11,7 +11,7 @@ spring:
       uri: http://ec2-3-135-227-210.us-east-2.compute.amazonaws.com:8088
   data:
     mongodb:
-      uri: mongodb://localhost:27017/test
+      uri: mongodb://k4a305.p.ssafy.io:27017/test
 management:
   endpoints:
     web:
@@ -21,5 +21,5 @@ management:
 # mongodb
 mongodb:
   test:
-    connectionString: mongodb://localhost:27017/test
+    connectionString: mongodb://k4a305.p.ssafy.io:27017/test
            

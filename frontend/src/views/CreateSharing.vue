@@ -67,7 +67,7 @@
 <script>
 import axios from 'axios';
 // import UploadPage from "./components/UploadPage.vue";
-const SERVER_URL = process.env.VUE_APP_SERVER_URL;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
 export default {
   data() {
     return {
