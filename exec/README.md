@@ -7,7 +7,7 @@
 ```
 $ config_server 실행(http://ec2-3-135-227-210.us-east-2.compute.amazonaws.com:8088)
 $ zuul 실행(http://ec2-3-135-227-210.us-east-2.compute.amazonaws.com:8089)
-$ FarmDiary_User_Service,FarmDiary_Board_Service,FarmDiary_Guide_Service 실행http://k4a305.p.ssafy.io:8091,8092,8093
+$ FarmDiary_User_Service,FarmDiary_Board_Service,FarmDiary_Guide_Service 실행 http://k4a305.p.ssafy.io:8091,8092,8093
 ```
 
 
