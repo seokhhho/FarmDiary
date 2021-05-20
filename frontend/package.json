@@ -45,5 +45,10 @@
     "vue-cli-plugin-vuetify": "~2.4.0",
     "vue-template-compiler": "2.6.10",
     "vuetify-loader": "^1.7.0"
+  },
+  "eslintConfig": {
+    "rules": {
+      "no-console": "off"
+    }
   }
 }

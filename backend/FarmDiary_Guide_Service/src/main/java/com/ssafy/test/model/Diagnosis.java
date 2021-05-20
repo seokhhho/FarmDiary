@@ -21,18 +21,19 @@ import lombok.Setter;
 public class Diagnosis {
 	@Id
 	private String id;
+	private String fileName;
 	private String cropName;
 	private String img;
 	private String pestName;
 	private String percentage;
 	
-	public Diagnosis(String id, String cropName, String img, String pestName, String percentage) {
+	public Diagnosis(String fileName, String cropName, String img, String pestName, String percentage) {
 		super();
-		this.id = id;
+		this.fileName = fileName;
 		this.cropName = cropName;
 		this.img = img;
 		this.pestName = pestName;
 		this.percentage = percentage;
 	}
-
+	
 }
