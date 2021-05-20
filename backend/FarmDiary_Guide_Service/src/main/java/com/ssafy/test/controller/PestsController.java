@@ -70,7 +70,7 @@ public class PestsController {
 		
 		destinationFileName = cropName + "." + sourceFileNameExtension;
 		System.out.println(destinationFileName);
-		destinationFile = new File("home/ubuntu/KNY_backend/images" + destinationFileName);
+		destinationFile = new File("home/ubuntu/KNY_backend/images/" + destinationFileName);
         if(!destinationFile.exists())
         	destinationFile.getParentFile().mkdirs();
         sourceFile.transferTo(destinationFile);
