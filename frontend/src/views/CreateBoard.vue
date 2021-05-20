@@ -58,7 +58,7 @@
 
 <script>
 import axios from 'axios';
-const SERVER_URL = process.env.VUE_APP_SERVER_URL;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
 export default {
   data() {
     return {
@@ -94,7 +94,7 @@ export default {
       if (img.files.length != 0) {
         frm.append('file', img.files[0]);
         axios
-          .post(`${SERVER_URL}/LSH/file/uploadBrd/`, frm)
+          .post(`${SERVER_URL}/file/uploadBrd/`, frm)
           .then((res) => {
             // console.log(res.data.message)
             // item.push({img: SERVER_URL + "/file/read/" + res.data.message})
@@ -102,7 +102,7 @@ export default {
 
             // DB에 저장
             axios
-              .post(`${SERVER_URL}/LSH/board/create`, item, {})
+              .post(`${SERVER_URL}/board/create`, item, {})
               .then((response) => {
                 confirm('작성하시겠습니까?');
                 alert('글쓰기 성공!');
@@ -118,7 +118,7 @@ export default {
       } else {
         // DB에 저장
         axios
-          .post(`${SERVER_URL}/LSH/board/create`, item, {})
+          .post(`${SERVER_URL}/board/create`, item, {})
           .then((response) => {
             confirm('작성하시겠습니까?');
             alert('글쓰기 성공!');

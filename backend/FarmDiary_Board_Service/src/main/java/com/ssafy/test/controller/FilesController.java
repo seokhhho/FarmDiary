@@ -79,6 +79,19 @@ public class FilesController {
 	    String message = "";
 	    System.out.println("zzz" + files.size());
 	    List<String> list = new LinkedList<String>();
+	    String path = System.getProperty("user.dir") + "/uploads";
+    	File Folder = new File(path);
+    	if (!Folder.exists()) {
+    		try{
+    		    Folder.mkdir(); //폴더 생성합니다.
+    		    System.out.println("폴더가 생성되었습니다.");
+    	     } 
+    	     catch(Exception e){
+    		    e.getStackTrace();
+    		}        
+         }else {
+        	 System.out.println("폴더있음");
+         }
 	    for(MultipartFile file : files) {
 	    System.out.println(file + "이다");
 	    String name = file.getOriginalFilename();

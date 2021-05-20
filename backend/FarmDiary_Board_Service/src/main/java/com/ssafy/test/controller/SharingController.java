@@ -1,8 +1,10 @@
 package com.ssafy.test.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -31,8 +33,14 @@ public class SharingController {
 	
 	@PostMapping(value ="/create")
 	public Sharing create(@RequestBody Sharing sharing) {
+//		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+//		String format_time1 = format1.format (System.currentTimeMillis());
+		Date date = new Date();
+		TimeZone time = TimeZone.getTimeZone("Asia/Seoul");
 		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
-		String format_time1 = format1.format (System.currentTimeMillis());
+		format1.setTimeZone(time);
+		System.out.println("캬캬캬");
+		String format_time1 = format1.format (date);
 		sharing.setDate(format_time1);
 		return sharingRepository.save(sharing);
 	}
