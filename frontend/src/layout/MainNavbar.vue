@@ -46,22 +46,34 @@
                       </md-button>
                       <ul class="dropdown-menu dropdown-with-icons">
                         <li>
-                          <a href="#/">
-                            <i class="material-icons">search</i>
+                          <router-link to="/pestsDiagnosis">
+                            <i class="material-icons">face</i>
                             <p>병해충 진단</p>
-                          </a>
+                          </router-link>
                         </li>
                         <li>
-                          <a href="#/">
+                          <router-link to="/pests">
+                            <i class="material-icons">search</i>
+                            <p>병해충 검색</p>
+                          </router-link>
+                        </li>
+                        <li>
+                          <router-link to="/sharing">
                             <i class="material-icons">shopping_cart</i>
                             <p>농작물 나눔</p>
-                          </a>
+                          </router-link>
                         </li>
                         <li>
-                          <a href="#/">
+                          <router-link to="/guide">
                             <i class="material-icons">article</i>
                             <p>가이드</p>
-                          </a>
+                           </router-link>
+                        </li>
+                        <li>
+                          <router-link to="/board">
+                            <i class="material-icons">dashboard</i>
+                            <p>게시판</p>
+                           </router-link>
                         </li>
                       </ul>
                     </drop-down>

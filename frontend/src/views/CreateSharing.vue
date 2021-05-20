@@ -109,7 +109,7 @@ export default {
         frm.append("file", document.getElementById('img').files[x]);
       }
         axios
-          .post(`${SERVER_URL}/LSH/file/upload/`, frm)
+          .post(`${SERVER_URL}/file/upload/`, frm)
           .then((res) => {
             // console.log(res.data.message)
             // item.push({img: SERVER_URL + "/file/read/" + res.data.message})
@@ -121,7 +121,7 @@ export default {
             item['img'] = this.imgs;
             // DB에 저장
             axios
-              .post(`${SERVER_URL}/LSH/sharing/create`, item, {})
+              .post(`${SERVER_URL}/sharing/create`, item, {})
               .then((response) => {
                 confirm('작성하시겠습니까?');
                 alert('글쓰기 성공!');
@@ -135,7 +135,7 @@ export default {
       }else{
          // DB에 저장
             axios
-              .post(`${SERVER_URL}/LSH/board/create`, item, {})
+              .post(`${SERVER_URL}/board/create`, item, {})
               .then((response) => {
                 confirm('작성하시겠습니까?');
                 alert('글쓰기 성공!');

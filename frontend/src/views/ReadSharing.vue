@@ -41,7 +41,11 @@
               
               <!-- <img :src="board.img[0]" style="width:30;height:30;" /> -->
               <!-- </div> -->
-              
+              <div class="my-2" style="width:30%;margin-top:50px;margin-bottom:20px;margin-left:35%"><router-link to="/sharing">
+              <v-btn x-large color="success" dark width="90%">
+                <i class="material-icons">dashboard</i> 목록
+              </v-btn></router-link>
+            </div>
             </div>
             <!-- <p style="width:90%;"> -->
               <!-- <v-btn
@@ -52,6 +56,7 @@
                 >삭제</v-btn
               > -->
             <!-- </p> -->
+            
             <div style="margin-top:-130px">
             <div v-for="(item, index) in reply" :key="item.id" id="reply">
               <div @click="openText(index)" style="cursor:pointer">
@@ -65,6 +70,7 @@
                 </div>
                 <!-- <div>{{item.reReply[0].text}}</div> -->
               </div>
+              
               <div v-if="tmp">
                 <div
                   id="app"
