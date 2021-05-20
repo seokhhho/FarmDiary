@@ -85,7 +85,7 @@
         ></v-carousel-item>
       </v-carousel>
       </div>
-      <div style="margin-top:-540px;margin-left:53%" v-if="list2.length">
+      <div style="margin-top:-540px;margin-left:53%" v-if="list.length >= 5">
       <h3 style="margin-left:3%;margin-top:70px">오늘의 텃밭 소식 </h3>
       <div @click="goToBoard()" style="margin-top:-30px ; margin-left:77% ; cursor:pointer ;">더보기</div>
       <v-carousel
@@ -117,7 +117,7 @@ import VueWeather from 'vue-weather-widget';
 // import JavascriptComponents from "./components/JavascriptComponentsSection";
 // import { LoginCard } from "@/components";
 // import { Badge } from "@/components";
-const SERVER_URL = process.env.VUE_APP_SERVER_URL;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
 export default {
   components: {
     // Navigation,
@@ -244,7 +244,7 @@ export default {
 
     async readSharing() {
       try {
-        const res = await axios.get(`${SERVER_URL}/LSH/sharing/read`, {
+        const res = await axios.get(`${SERVER_URL}/sharing/read`, {
           params: { type: '', word: this.page },
         });
         this.list = res.data;
@@ -262,7 +262,7 @@ export default {
     async readBoard() {
       console.log('sdfsd');
       try {
-        const res = await axios.get(`${SERVER_URL}/LSH/board/read`, {
+        const res = await axios.get(`${SERVER_URL}/board/read`, {
           params: { type: '', word: this.page },
         });
         this.list2 = res.data;
