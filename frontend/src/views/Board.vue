@@ -71,7 +71,7 @@
 <script>
 import axios from 'axios';
 // import { Pagination } from "@/components";
-const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL;
 export default {
   components: {
     // Pagination
@@ -106,7 +106,7 @@ export default {
     async getList() {
       console.log('sdfsd');
       try {
-        const res = await axios.get(`${SERVER_URL}/board/read`, {
+        const res = await axios.get(`${SERVER_URL}/LSH/board/read`, {
           params: { type: '', word: this.page },
         });
         this.list = res.data;
@@ -122,7 +122,7 @@ export default {
     },
     async getTotal() {
       try {
-        const res = await axios.get(`${SERVER_URL}/board/count`);
+        const res = await axios.get(`${SERVER_URL}/LSH/board/count`);
         this.total = res.data;
         console.log("토탈 : " + this.total);
         // this.hashKey = res.data.vote.hashKey;
@@ -171,9 +171,6 @@ export default {
     img {
       margin-bottom: 2.142rem;
     }
-  }
-
-  #board {
   }
 }
 </style>

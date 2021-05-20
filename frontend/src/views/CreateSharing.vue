@@ -67,7 +67,7 @@
 <script>
 import axios from 'axios';
 // import UploadPage from "./components/UploadPage.vue";
-const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL;
 export default {
   data() {
     return {
@@ -109,19 +109,19 @@ export default {
         frm.append("file", document.getElementById('img').files[x]);
       }
         axios
-          .post(`${SERVER_URL}/file/upload/`, frm)
+          .post(`${SERVER_URL}/LSH/file/upload/`, frm)
           .then((res) => {
             // console.log(res.data.message)
             // item.push({img: SERVER_URL + "/file/read/" + res.data.message})
             this.list = res.data;
 
             for(var i = 0 ; i < this.list.length ; i++){
-            this.imgs.push(SERVER_URL + '/file/read/' + this.list[i]);
+            this.imgs.push(SERVER_URL + '/LSH/file/read/' + this.list[i]);
             }
             item['img'] = this.imgs;
             // DB에 저장
             axios
-              .post(`${SERVER_URL}/sharing/create`, item, {})
+              .post(`${SERVER_URL}/LSH/sharing/create`, item, {})
               .then((response) => {
                 confirm('작성하시겠습니까?');
                 alert('글쓰기 성공!');
@@ -135,7 +135,7 @@ export default {
       }else{
          // DB에 저장
             axios
-              .post(`${SERVER_URL}/board/create`, item, {})
+              .post(`${SERVER_URL}/LSH/board/create`, item, {})
               .then((response) => {
                 confirm('작성하시겠습니까?');
                 alert('글쓰기 성공!');

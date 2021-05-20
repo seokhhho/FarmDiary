@@ -137,7 +137,7 @@ export default {
       if (this.$refs.form.validate()) {
         axios({
           method: "post",
-          url: "http://localhost:8090/user/signup",
+          url: "http://ec2-3-135-227-210.us-east-2.compute.amazonaws.com:8089/user/signup",
           headers: {
             contentType: "application/json",
           },

@@ -117,7 +117,7 @@ import VueWeather from 'vue-weather-widget';
 // import JavascriptComponents from "./components/JavascriptComponentsSection";
 // import { LoginCard } from "@/components";
 // import { Badge } from "@/components";
-const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL;
 export default {
   components: {
     // Navigation,
@@ -244,7 +244,7 @@ export default {
 
     async readSharing() {
       try {
-        const res = await axios.get(`${SERVER_URL}/sharing/read`, {
+        const res = await axios.get(`${SERVER_URL}/LSH/sharing/read`, {
           params: { type: '', word: this.page },
         });
         this.list = res.data;
@@ -262,7 +262,7 @@ export default {
     async readBoard() {
       console.log('sdfsd');
       try {
-        const res = await axios.get(`${SERVER_URL}/board/read`, {
+        const res = await axios.get(`${SERVER_URL}/LSH/board/read`, {
           params: { type: '', word: this.page },
         });
         this.list2 = res.data;
