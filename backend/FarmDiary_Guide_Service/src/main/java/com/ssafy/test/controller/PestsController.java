@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.nio.charset.StandardCharsets;
 import java.sql.Blob;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -67,8 +68,9 @@ public class PestsController {
 		String sourceFileNameExtension = StringUtils.getFilenameExtension(sourceFileName).toLowerCase();
 		File destinationFile;
 		String destinationFileName;
+		String now = LocalDateTime.now().toString();
 		
-		destinationFileName = cropName + "." + sourceFileNameExtension;
+		destinationFileName = cropName + now + "." + sourceFileNameExtension;
 		System.out.println(destinationFileName);
 		destinationFile = new File("/home/ubuntu/KNY_backend/images/" + destinationFileName);
         if(!destinationFile.exists())
@@ -79,15 +81,15 @@ public class PestsController {
         FileInputStream fis = new FileInputStream( destinationFile );
         fis.read(image);
         String base64EncodedImage = new String (Base64.encodeBase64 (image), StandardCharsets.US_ASCII);
-		Diagnosis test = new Diagnosis("",cropName, base64EncodedImage, "","");
+		Diagnosis test = new Diagnosis(cropName + now,cropName, base64EncodedImage, "","");
 		
 		diagnosisRepository.insert(Arrays.asList(test));
 		
 		Calendar cal = Calendar.getInstance();
 
 		System.out.println(cal.getTime());
-		Thread.sleep(10000);
-		
-		return new ResponseEntity<Diagnosis>(diagnosisRepository.findByCropName(cropName), HttpStatus.OK);
+		Thread.sleep(5000);
+		System.out.println(diagnosisRepository.findByFileName(cropName+now).getFileName());
+		return new ResponseEntity<Diagnosis>(diagnosisRepository.findByFileName(cropName+now), HttpStatus.OK);
 	}
 }
