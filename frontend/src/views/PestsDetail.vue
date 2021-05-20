@@ -11,21 +11,27 @@
       <div class="md-layout">
       <div class="md-layout-item">
         <div class="tim-typo" v-if="pestsDetail.environment">
-          <h3 class="title">
+          <h3 class="title" v-if="pestsDetail.type=='병'">
             발생 환경
+          </h3>
+          <h3 class="title" v-if="pestsDetail.type=='충'">
+            생태 정보
           </h3>
           <p class="text-muted" v-html="pestsDetail.environment">
           </p>
         </div>
         <div class="tim-typo" v-if="pestsDetail.descript">
-          <h3 class="title">
+          <h3 class="title" v-if="pestsDetail.type=='병'">
             증상 설명
+          </h3>
+          <h3 class="title" v-if="pestsDetail.type=='충'">
+            피해 정보
           </h3>
           <p class="text-muted" v-html="pestsDetail.descript">
           </p>
         </div>
-        <div class="tim-typo">
-          <h3 class="title" v-if="pestsDetail.prevent">
+        <div class="tim-typo" v-if="pestsDetail.prevent">
+          <h3 class="title">
             방제 방법
           </h3>
           <p class="text-muted" v-html="pestsDetail.prevent">
@@ -90,8 +96,9 @@ export default {
       })
         .then(res => {
           this.pestsDetail = [];
-          if(res.data.length!=0)
+          if(res.data.length!=0) {
             this.pestsDetail = res.data[0];
+          }
         })
         .catch(error => {
           console.log(error);

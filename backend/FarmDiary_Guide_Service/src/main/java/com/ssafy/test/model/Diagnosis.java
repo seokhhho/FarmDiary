@@ -23,13 +23,16 @@ public class Diagnosis {
 	private String id;
 	private String cropName;
 	private String img;
-	private String result;
+	private String pestName;
+	private String percentage;
 	
-	public Diagnosis(String cropName, String img, String result) {
+	public Diagnosis(String id, String cropName, String img, String pestName, String percentage) {
 		super();
+		this.id = id;
 		this.cropName = cropName;
 		this.img = img;
-		this.result = result;
+		this.pestName = pestName;
+		this.percentage = percentage;
 	}
-	
+
 }

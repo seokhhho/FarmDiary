@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.nio.charset.StandardCharsets;
 import java.sql.Blob;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,6 @@ import java.util.Map;
 import javax.sql.rowset.serial.SerialBlob;
 
 import org.apache.commons.codec.binary.Base64;
-//import org.apache.commons.lang3.RandomStringUtils;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +29,6 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ssafy.test.Customer;
 import com.ssafy.test.model.Diagnosis;
 import com.ssafy.test.model.DiagnosisRepository;
 import com.ssafy.test.model.Pests;
@@ -68,24 +67,10 @@ public class PestsController {
 		String sourceFileNameExtension = StringUtils.getFilenameExtension(sourceFileName).toLowerCase();
 		File destinationFile;
 		String destinationFileName;
-//		byte[] bytes;
-//		bytes = sourceFile.getBytes();
-////		destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension;
-//		System.out.println(sourceFileNameExtension);
-//		Blob blob = new SerialBlob(bytes);
-//		System.out.println(blob);
-//		
-//		Diagnosis test = new Diagnosis(cropName, blob, "test");
-//		
-//		diagnosisRepository.insert(Arrays.asList(test));
-//		
-//		System.out.println(diagnosisRepository.findByCropName("django.png"));
-//		
-//		System.out.println("!!!");
 		
 		destinationFileName = cropName + "." + sourceFileNameExtension;
 		System.out.println(destinationFileName);
-		destinationFile = new File("C:/ssafy/Project3/" + destinationFileName);
+		destinationFile = new File("home/ubuntu/KNY_backend/images" + destinationFileName);
         if(!destinationFile.exists())
         	destinationFile.getParentFile().mkdirs();
         sourceFile.transferTo(destinationFile);
@@ -93,10 +78,15 @@ public class PestsController {
         byte [] image = new byte[ (int) destinationFile.length() ];
         FileInputStream fis = new FileInputStream( destinationFile );
         fis.read(image);
-        String base64EncodedImage = "data: image/png;base64," + new String (Base64.encodeBase64 (image), StandardCharsets.US_ASCII);
-		Diagnosis test = new Diagnosis(cropName, base64EncodedImage, "검은무늬병");
+        String base64EncodedImage = new String (Base64.encodeBase64 (image), StandardCharsets.US_ASCII);
+		Diagnosis test = new Diagnosis("",cropName, base64EncodedImage, "","");
 		
 		diagnosisRepository.insert(Arrays.asList(test));
+		
+		Calendar cal = Calendar.getInstance();
+
+		System.out.println(cal.getTime());
+		Thread.sleep(10000);
 		
 		return new ResponseEntity<Diagnosis>(diagnosisRepository.findByCropName(cropName), HttpStatus.OK);
 	}

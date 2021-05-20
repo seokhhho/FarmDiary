@@ -1,6 +1,6 @@
 
 server:
-  port: 8091
+  port: 8093
 spring:
   profiles: # 여기에 지정해도 되고, 실행할 때 지정해도 된다.
     active: url
@@ -11,7 +11,7 @@ spring:
       uri: http://ec2-3-135-227-210.us-east-2.compute.amazonaws.com:8088
   data:
     mongodb:
-      uri: mongodb://k4a305.p.ssafy.io:27017/27017
+      uri: ${mongodb.uri}
 management:
   endpoints:
     web:
@@ -21,5 +21,5 @@ management:
 # mongodb
 mongodb:
   test:
-    connectionString: mongodb://k4a305.p.ssafy.io:27017/27017
+    connectionString: ${mongodb.uri}
            
