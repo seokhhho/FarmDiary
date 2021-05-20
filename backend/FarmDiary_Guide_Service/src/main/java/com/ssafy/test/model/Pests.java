@@ -19,6 +19,7 @@ import lombok.Setter;
 public class Pests {
 	@Id
 	private String id;
+	private String type;
 	private String pestName;
 	private String cropName;
 	private String environment;

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssafy.test.Customer;
 import com.ssafy.test.model.Guide;
 import com.ssafy.test.model.GuideRepository;
 

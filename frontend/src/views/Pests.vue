@@ -62,18 +62,21 @@ export default {
     };
   },
   methods: {
-    getPestsList(place) {
-      console.log(place);
+    getPestsList(crop) {
+      console.log(crop);
       this.name = this.cropName;
       axios({
         method: "get",
-        url: `${SERVER_URL}/pests/${place}/`
+        url: `${SERVER_URL}/pests/${crop}/`
       })
         .then(res => {
           this.pestslist = [];
           for(var i=0; i<res.data.length;i++) {
             this.pestslist.push(res.data[i]);
           }
+          console.log(res.data);
+          if(res.data.length==0)
+            this.name = "해당 작물에 대한 정보가 없습니다.";
         })
         .catch(error => {
           console.log(error);

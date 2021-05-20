@@ -43,9 +43,8 @@
             <md-button class="md-success" @click="diagnose()">진단하기</md-button>
           </div>
 
-          <a @click="move(diagnosis.result)">{{diagnosis.result}} </a>
-          <h3 @click="move(diagnosis.result)">
-            {{diagnosis.result}}  
+          <h3 @click="move(diagnosis.pestName)" v-if="diagnosis.pestName">
+            {{diagnosis.percentage}}%확률로 {{diagnosis.pestName}}이라고 판단됩니다. 
           </h3>
 
         </div>
@@ -86,35 +85,18 @@ export default {
             .post(`${SERVER_URL}/pests/diagnose`, fd)
             .then(res => {
               console.log(res.data);
-              this.Img = res.data.img;
+              this.Img = "data: image/png;base64,"+res.data.img;
               this.diagnosis = res.data;
-              alert('정보 수정이 완료되었습니다!');
+              alert('진단이 완료되었습니다!');
             })
             .catch((error) => {
               console.log(error);
-              alert('정보 수정에 실패했습니다');
+              alert('진단에 실패했습니다');
             });
 
       }
     },
 
-    getPestsList(place) {
-      console.log(place);
-      this.name = this.cropName;
-      axios({
-        method: "get",
-        url: `${SERVER_URL}/pests/${place}/`
-      })
-        .then(res => {
-          this.pestslist = [];
-          for(var i=0; i<res.data.length;i++) {
-            this.pestslist.push(res.data[i]);
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
     move(pestName) {
       this.$router.push('pestsDetail/'+this.cropName+'/'+pestName);
     },
