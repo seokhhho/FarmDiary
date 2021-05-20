@@ -16,7 +16,7 @@
           <div>gdgdg {{ title }}</div>
           <br /><br /><br /><br /><br /><br /> -->
           <div id="board">
-            <h2 style="text-align:center">자유 게시판</h2>
+            <h2 style="text-align:center">오늘의 전원일기 게시판</h2>
             <div style="text-align:right">
             <v-btn @click="create">글 작성</v-btn>
             </div>
@@ -31,7 +31,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="item in list" :key="item.name" @click="read(item.id)">
+                  <tr v-for="item in list" :key="item.name" @click="read(item.id)" style="cursor:pointer ;">
                     <!-- <td>1</td> -->
                     <td>{{ item.title }}</td>
                     <td>하이룽</td>
@@ -71,7 +71,7 @@
 <script>
 import axios from 'axios';
 // import { Pagination } from "@/components";
-const SERVER_URL = process.env.VUE_APP_SERVER_URL;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
 export default {
   components: {
     // Pagination
@@ -106,7 +106,7 @@ export default {
     async getList() {
       console.log('sdfsd');
       try {
-        const res = await axios.get(`${SERVER_URL}/board/read`, {
+        const res = await axios.get(`${SERVER_URL}/LSH/board/read`, {
           params: { type: '', word: this.page },
         });
         this.list = res.data;
@@ -122,7 +122,7 @@ export default {
     },
     async getTotal() {
       try {
-        const res = await axios.get(`${SERVER_URL}/board/count`);
+        const res = await axios.get(`${SERVER_URL}/LSH/board/count`);
         this.total = res.data;
         console.log("토탈 : " + this.total);
         // this.hashKey = res.data.vote.hashKey;
