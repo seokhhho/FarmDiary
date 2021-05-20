@@ -3,4 +3,4 @@ LSH:
     url: http://localhost:8088
 User:
     path : /user/**
-    url : http://ec2-3-135-227-210.us-east-2.compute.amazonaws.com:8091
+    url : http://k4a305.p.ssafy.io:8080
