@@ -29,7 +29,6 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ssafy.test.Customer;
 import com.ssafy.test.model.Diagnosis;
 import com.ssafy.test.model.DiagnosisRepository;
 import com.ssafy.test.model.Pests;
