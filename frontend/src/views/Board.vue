@@ -32,14 +32,14 @@
                 </thead>
                 <tbody>
                   <tr
-                    v-for="item in list"
+                    v-for="(item,idx) in list"
                     :key="item.name"
                     @click="read(item.id)"
                     style="cursor:pointer ;"
                   >
                     <!-- <td>1</td> -->
                     <td>{{ item.title }}</td>
-                    <td>하이룽</td>
+                    <td>{{nickname[idx]}}</td>
                     <td>{{ item.date }}</td>
                   </tr>
                 </tbody>
@@ -84,7 +84,8 @@ export default {
       list: [],
       infoPagination: 3,
       page: 1,
-      total: 0
+      total: 0,
+      nickname : ["하이룽","미미광어","팡대","모히또","호이짜","사랑해유","와이키키","나스타","미미시스터","나천재","니코니코니","싸브레","솔라씨","카키","핫썸머","코피퐝"],
     };
   },
   created() {
