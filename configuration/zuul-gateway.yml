@@ -1,6 +1,6 @@
 LSH:
     path: /LSH/**
-    url: http://localhost:8088
+    url: http://k4a305.p.ssafy.io:8091
 User:
     path : /user/**
     url : http://k4a305.p.ssafy.io:8080
