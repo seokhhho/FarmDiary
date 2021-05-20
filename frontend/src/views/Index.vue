@@ -24,9 +24,11 @@
           <div class="title" style="font-size:18px;width:400px;margin-left:-20%;margin-top:30px">
             당신의 텃밭작물을 AI를 통해 진단 받으세요!
           </div>
+          <router-link to="/pestsDiagnosis">
           <v-btn id ="bugBtn" style="margin-left:97%;margin-top:-118px"
           >진단받기</v-btn
         >
+          </router-link>
         </div>
         <!-- <v-btn id ="bugBtn" style=""
           >진단받기</v-btn
@@ -66,6 +68,7 @@
           </tr>
         </tbody>
       </v-simple-table>
+      <div v-if="list.length >= 5">
       <h3 style="margin-left:3%;padding-right:70%;margin-top:70px">나눔 게시판 </h3>
       <div @click="goToSharing()" style="margin-top:-30px ; margin-left:42% ; cursor:pointer ;">더보기</div>
 
@@ -81,7 +84,8 @@
           style="cursor:pointer ;"
         ></v-carousel-item>
       </v-carousel>
-      <div style="margin-top:-540px;margin-left:53%">
+      </div>
+      <div style="margin-top:-540px;margin-left:53%" v-if="list2.length">
       <h3 style="margin-left:3%;margin-top:70px">오늘의 텃밭 소식 </h3>
       <div @click="goToBoard()" style="margin-top:-30px ; margin-left:77% ; cursor:pointer ;">더보기</div>
       <v-carousel
@@ -194,7 +198,7 @@ export default {
     };
   },
   created() {
-    this.readWeather();
+    // this.readWeather();
     this.readSharing();
     this.readBoard();
   },
@@ -206,30 +210,30 @@ export default {
         this.leafShow = true;
       }
     },
-    async readWeather() {
-      try {
-        const resp = await axios.get(
-          `http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=8b2333e996db9ac6859d281721dd4987`,
-          {}
-        );
-        console.log(resp);
-        console.log('현재온도 : ' + (resp.data.main.temp - 273.15));
-        console.log('현재습도 : ' + resp.data.main.humidity);
-        console.log('날씨 : ' + resp.data.weather[0].main);
-        console.log('상세날씨설명 : ' + resp.data.weather[0].description);
-        console.log('날씨 이미지 : ' + resp.data.weather[0].icon);
-        console.log('바람   : ' + resp.data.wind.speed);
-        console.log('나라   : ' + resp.data.sys.country);
-        console.log('도시이름  : ' + resp.data.name);
-        console.log('구름  : ' + resp.data.clouds.all + '%');
-        this.weatherImg =
-          'http://openweathermap.org/img/w/' +
-          resp.data.weather[0].icon +
-          '.png';
-      } catch (err) {
-        console.log(err);
-      }
-    },
+    // async readWeather() {
+    //   try {
+    //     const resp = await axios.get(
+    //       `http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=8b2333e996db9ac6859d281721dd4987`,
+    //       {}
+    //     );
+    //     console.log(resp);
+    //     console.log('현재온도 : ' + (resp.data.main.temp - 273.15));
+    //     console.log('현재습도 : ' + resp.data.main.humidity);
+    //     console.log('날씨 : ' + resp.data.weather[0].main);
+    //     console.log('상세날씨설명 : ' + resp.data.weather[0].description);
+    //     console.log('날씨 이미지 : ' + resp.data.weather[0].icon);
+    //     console.log('바람   : ' + resp.data.wind.speed);
+    //     console.log('나라   : ' + resp.data.sys.country);
+    //     console.log('도시이름  : ' + resp.data.name);
+    //     console.log('구름  : ' + resp.data.clouds.all + '%');
+    //     this.weatherImg =
+    //       'http://openweathermap.org/img/w/' +
+    //       resp.data.weather[0].icon +
+    //       '.png';
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // },
 
     goToSharing() {
       this.$router.push('sharing');
@@ -240,7 +244,7 @@ export default {
 
     async readSharing() {
       try {
-        const res = await axios.get(`${SERVER_URL}/LSH/sharing/read`, {
+        const res = await axios.get(`${SERVER_URL}/sharing/read`, {
           params: { type: '', word: this.page },
         });
         this.list = res.data;
