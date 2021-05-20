@@ -34,12 +34,16 @@
               <v-btn style="width:10%; margin-left:90%;margin-top:-60px"
                 >삭제</v-btn -->
 
-            <div class="my-2" style="width:30%;margin-top:50px;margin-bottom:20px;margin-left:30%"><router-link to="/board">
-              <v-btn x-large color="success" dark width="90%">
-                <i class="material-icons">dashboard</i> 목록
-              </v-btn></router-link>
+            <div
+              class="my-2"
+              style="width:30%;margin-top:50px;margin-bottom:20px;margin-left:30%"
+            >
+              <router-link to="/board">
+                <v-btn x-large color="success" dark width="90%">
+                  <i class="material-icons">dashboard</i> 목록
+                </v-btn></router-link
+              >
             </div>
-            
 
             <!-- </p> -->
             <div v-for="(item, index) in reply" :key="item.id" id="reply">
@@ -106,31 +110,31 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
 export default {
   data() {
     return {
       board: [],
       reply: [],
-      createdReply: '',
+      createdReply: "",
       re_reply: [],
       tmp: false,
-      reReply: '',
+      reReply: ""
     };
   },
 
   components: {},
-  bodyClass: 'profile-page',
+  bodyClass: "profile-page",
 
   props: {
     header: {
       type: String,
-      default: require('@/assets/img/city-profile.jpg'),
+      default: require("@/assets/img/city-profile.jpg")
     },
     img: {
       type: String,
-      default: require('@/assets/img/faces/christian.jpg'),
+      default: require("@/assets/img/faces/christian.jpg")
     },
   },
   created() {
@@ -141,7 +145,7 @@ export default {
     async readBoard() {
       try {
         const res = await axios.get(`${SERVER_URL}/board/read`, {
-          params: { type: 'id', word: this.$route.params.id },
+          params: { type: "id", word: this.$route.params.id }
         });
         this.board = res.data[0];
         //console.log(res.data[0]+ 'ㅋㅋㅋ?');
@@ -158,14 +162,14 @@ export default {
     async readReply() {
       try {
         const res = await axios.get(`${SERVER_URL}/reply/read`, {
-          params: { boardId: this.$route.params.id },
+          params: { boardId: this.$route.params.id }
         });
         this.reply = res.data;
-        console.log('sdf' + this.reply.length);
+        console.log("sdf" + this.reply.length);
         for (var i = 0; i < this.reply.length; i++) {
           this.re_reply.push(false);
         }
-        console.log(this.re_reply[0] + 'fhtr?');
+        console.log(this.re_reply[0] + "fhtr?");
         // this.hashKey = res.data.vote.hashKey;
         // const idx = res.data.vote.contractAddress * 1;
         // await this.getData(idx);
@@ -208,7 +212,7 @@ export default {
     },
 
     openText(index) {
-      console.log(this.re_reply[index] + 'sdfsdfsdfsdf');
+      console.log(this.re_reply[index] + "sdfsdfsdfsdf");
       if (this.re_reply[index]) {
         this.re_reply[index] = false;
         this.tmp = false;
@@ -221,7 +225,7 @@ export default {
   computed: {
     headerStyle() {
       return {
-        backgroundImage: `url(${this.header})`,
+        backgroundImage: `url(${this.header})`
       };
     },
   },
@@ -238,7 +242,7 @@ export default {
     justify-content: center;
   }
 
-  [class*='tab-pane-'] {
+  [class*="tab-pane-"] {
     margin-top: 3.213rem;
     padding-bottom: 50px;
 

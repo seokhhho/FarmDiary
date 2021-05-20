@@ -21,13 +21,16 @@
       <br /><br /><br />
       <div id="testBugMark">
         <div class="tim-typo">
-          <div class="title" style="font-size:18px;width:400px;margin-left:-20%;margin-top:30px">
+          <div
+            class="title"
+            style="font-size:18px;width:400px;margin-left:-20%;margin-top:30px"
+          >
             당신의 텃밭작물을 AI를 통해 진단 받으세요!
           </div>
           <router-link to="/pestsDiagnosis">
-          <v-btn id ="bugBtn" style="margin-left:97%;margin-top:-118px"
-          >진단받기</v-btn
-        >
+            <v-btn id="bugBtn" style="margin-left:97%;margin-top:-118px"
+              >진단받기</v-btn
+            >
           </router-link>
         </div>
         <!-- <v-btn id ="bugBtn" style=""
@@ -69,45 +72,57 @@
         </tbody>
       </v-simple-table>
       <div v-if="list.length >= 5">
-      <h3 style="margin-left:3%;padding-right:70%;margin-top:70px">나눔 게시판 </h3>
-      <div @click="goToSharing()" style="margin-top:-30px ; margin-left:42% ; cursor:pointer ;">더보기</div>
+        <h3 style="margin-left:3%;padding-right:70%;margin-top:70px">
+          나눔 게시판
+        </h3>
+        <div
+          @click="goToSharing()"
+          style="margin-top:-30px ; margin-left:42% ; cursor:pointer ;"
+        >
+          더보기
+        </div>
 
-      <v-carousel
-      :show-arrows="false"
-        style="border-radius:30px;width:40%;margin-left:5%;margin-top:30px;height:400px;border: 0.1rem solid grey; "
-      >
-        <v-carousel-item
-          v-for="n in 5"
-          :key="n"
-          :src="list[n-1].img[0]"
-          @click="goToReadSharing(list[n-1].id)"
-          style="cursor:pointer ;"
-        ></v-carousel-item>
-      </v-carousel>
+        <v-carousel
+          :show-arrows="false"
+          style="border-radius:30px;width:40%;margin-left:5%;margin-top:30px;height:400px;border: 0.1rem solid grey; "
+        >
+          <v-carousel-item
+            v-for="n in 5"
+            :key="n"
+            :src="list[n - 1].img[0]"
+            @click="goToReadSharing(list[n - 1].id)"
+            style="cursor:pointer ;"
+          ></v-carousel-item>
+        </v-carousel>
       </div>
       <div style="margin-top:-540px;margin-left:53%" v-if="list.length >= 5">
-      <h3 style="margin-left:3%;margin-top:70px">오늘의 텃밭 소식 </h3>
-      <div @click="goToBoard()" style="margin-top:-30px ; margin-left:77% ; cursor:pointer ;">더보기</div>
-      <v-carousel
-      :show-arrows="false"
-        style="border-radius:30px;width:80%;margin-left:5%;margin-top:30px;height:400px;border: 0.1rem solid grey; "
-      >
-        <v-carousel-item
-          v-for="n in 1"
-          :key="n"
-          :src="list2[n-1].img"
-          @click="goToReadBoard(list2[n-1].id)"
-          style="cursor:pointer ;"
-        ></v-carousel-item>
-      </v-carousel>
+        <h3 style="margin-left:3%;margin-top:70px">오늘의 텃밭 소식</h3>
+        <div
+          @click="goToBoard()"
+          style="margin-top:-30px ; margin-left:77% ; cursor:pointer ;"
+        >
+          더보기
+        </div>
+        <v-carousel
+          :show-arrows="false"
+          style="border-radius:30px;width:80%;margin-left:5%;margin-top:30px;height:400px;border: 0.1rem solid grey; "
+        >
+          <v-carousel-item
+            v-for="n in 1"
+            :key="n"
+            :src="list2[n - 1].img"
+            @click="goToReadBoard(list2[n - 1].id)"
+            style="cursor:pointer ;"
+          ></v-carousel-item>
+        </v-carousel>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import VueWeather from 'vue-weather-widget';
+import axios from "axios";
+import VueWeather from "vue-weather-widget";
 // import Navigation from "./components/NavigationSection";
 // import SmallNavigation from "./components/SmallNavigationSection";
 // import Tabs from "./components/TabsSection";
@@ -131,40 +146,40 @@ export default {
     // Badge
     VueWeather,
   },
-  name: 'index',
-  bodyClass: 'index-page',
+  name: "index",
+  bodyClass: "index-page",
   props: {
     image: {
       type: String,
-      default: require('@/assets/img/facebook_cover_photo_2.png'),
+      default: require("@/assets/img/facebook_cover_photo_2.png")
     },
     leaf4: {
       type: String,
-      default: require('@/assets/img/leaf4.png'),
+      default: require("@/assets/img/leaf4.png")
     },
     leaf3: {
       type: String,
-      default: require('@/assets/img/leaf3.png'),
+      default: require("@/assets/img/leaf3.png")
     },
     leaf2: {
       type: String,
-      default: require('@/assets/img/leaf2.png'),
+      default: require("@/assets/img/leaf2.png")
     },
     leaf1: {
       type: String,
-      default: require('@/assets/img/leaf1.png'),
+      default: require("@/assets/img/leaf1.png")
     },
     signup: {
       type: String,
-      default: require('@/assets/img/city.jpg'),
+      default: require("@/assets/img/city.jpg")
     },
     landing: {
       type: String,
-      default: require('@/assets/img/landing.jpg'),
+      default: require("@/assets/img/landing.jpg")
     },
     profile: {
       type: String,
-      default: require('@/assets/img/profile.jpg'),
+      default: require("@/assets/img/profile.jpg")
     },
   },
   data() {
@@ -173,26 +188,26 @@ export default {
       email: null,
       password: null,
       leafShow: false,
-      weatherImg: '',
+      weatherImg: "",
       list: [],
       list2: [],
       page: 1,
       bugInfo: [
         {
-          yellow: '(채소-마늘) 뿌리응애 ',
-          green: '(채소-딸기)흰가루병',
+          yellow: "(채소-마늘) 뿌리응애 ",
+          green: "(채소-딸기)흰가루병"
         },
         {
-          yellow: '(채소-마늘) 잎마름병 ',
-          green: '(채소-상추)잿빛곰팡이병',
+          yellow: "(채소-마늘) 잎마름병 ",
+          green: "(채소-상추)잿빛곰팡이병"
         },
         {
-          yellow: '(채소-마늘) 흑색썩음균핵병 ',
-          green: '(채소-오이)꽃노랑총채벌레',
+          yellow: "(채소-마늘) 흑색썩음균핵병 ",
+          green: "(채소-오이)꽃노랑총채벌레"
         },
         {
-          yellow: '(채소-양파) 노균병 ',
-          green: '(채소-오이)대만총채벌레',
+          yellow: "(채소-양파) 노균병 ",
+          green: "(채소-오이)대만총채벌레"
         },
       ],
     };
@@ -236,19 +251,19 @@ export default {
     // },
 
     goToSharing() {
-      this.$router.push('sharing');
+      this.$router.push("sharing");
     },
-     goToBoard() {
-      this.$router.push('board');
+    goToBoard() {
+      this.$router.push("board");
     },
 
     async readSharing() {
       try {
         const res = await axios.get(`${SERVER_URL}/sharing/read`, {
-          params: { type: '', word: this.page },
+          params: { type: "", word: this.page }
         });
         this.list = res.data;
-        console.log(res.data[1].title + '?');
+        console.log(res.data[1].title + "?");
         // this.hashKey = res.data.vote.hashKey;
         // const idx = res.data.vote.contractAddress * 1;
         // await this.getData(idx);
@@ -260,13 +275,13 @@ export default {
     },
 
     async readBoard() {
-      console.log('sdfsd');
+      console.log("sdfsd");
       try {
         const res = await axios.get(`${SERVER_URL}/board/read`, {
-          params: { type: '', word: this.page },
+          params: { type: "", word: this.page }
         });
         this.list2 = res.data;
-        console.log(res.data[1].title + '?');
+        console.log(res.data[1].title + "?");
         // this.hashKey = res.data.vote.hashKey;
         // const idx = res.data.vote.contractAddress * 1;
         // await this.getData(idx);
@@ -277,32 +292,32 @@ export default {
       }
     },
 
-    goToReadSharing(id){
-      this.$router.push('Sharing/'+id);
+    goToReadSharing(id) {
+      this.$router.push("Sharing/" + id);
     },
 
-    goToReadBoard(id){
-      this.$router.push('Board/'+id);
+    goToReadBoard(id) {
+      this.$router.push("Board/" + id);
     },
   },
   computed: {
     headerStyle() {
       return {
-        backgroundImage: `url(${this.image})`,
+        backgroundImage: `url(${this.image})`
       };
     },
     signupImage() {
       return {
-        backgroundImage: `url(${this.signup})`,
+        backgroundImage: `url(${this.signup})`
       };
     },
   },
   mounted() {
     this.leafActive();
-    window.addEventListener('resize', this.leafActive);
+    window.addEventListener("resize", this.leafActive);
   },
   beforeDestroy() {
-    window.removeEventListener('resize', this.leafActive);
+    window.removeEventListener("resize", this.leafActive);
   },
 };
 </script>
@@ -360,11 +375,11 @@ export default {
   height: 200px;
 }
 
-#bugBtn{
-  font-size:25px;
+#bugBtn {
+  font-size: 25px;
   // margin: right -300px;;
   // padding-right:-300px;
-  // margin-top:0.9%; 
-  background-color:#cddbdb;
+  // margin-top:0.9%;
+  background-color: #cddbdb;
 }
-</style>8
+</style>

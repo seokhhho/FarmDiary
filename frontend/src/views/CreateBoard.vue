@@ -57,56 +57,56 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
 export default {
   data() {
     return {
-      title: '',
-      contents: '',
-      form: [],
+      title: "",
+      contents: "",
+      form: []
     };
   },
 
   components: {},
-  bodyClass: 'profile-page',
+  bodyClass: "profile-page",
 
   props: {
     header: {
       type: String,
-      default: require('@/assets/img/city-profile.jpg'),
+      default: require("@/assets/img/city-profile.jpg")
     },
     img: {
       type: String,
-      default: require('@/assets/img/faces/christian.jpg'),
+      default: require("@/assets/img/faces/christian.jpg")
     },
   },
   methods: {
     create() {
       const item = {
         title: this.title,
-        contents: this.contents,
+        contents: this.contents
       };
       const frm = new FormData();
-      var img = document.getElementById('img');
-      console.log('사진11' + img);
-      console.log('사진' + img.files[0]);
+      var img = document.getElementById("img");
+      console.log("사진11" + img);
+      console.log("사진" + img.files[0]);
       if (img.files.length != 0) {
-        frm.append('file', img.files[0]);
+        frm.append("file", img.files[0]);
         axios
           .post(`${SERVER_URL}/file/uploadBrd/`, frm)
           .then((res) => {
             // console.log(res.data.message)
             // item.push({img: SERVER_URL + "/file/read/" + res.data.message})
-            item['img'] = SERVER_URL + '/file/read/' + res.data.message;
+            item["img"] = SERVER_URL + "/file/read/" + res.data.message;
 
             // DB에 저장
             axios
               .post(`${SERVER_URL}/board/create`, item, {})
               .then((response) => {
-                confirm('작성하시겠습니까?');
-                alert('글쓰기 성공!');
-                this.$router.push('Board');
+                confirm("작성하시겠습니까?");
+                alert("글쓰기 성공!");
+                this.$router.push("Board");
               })
               .catch(function(error) {
                 console.log(err);
@@ -120,9 +120,9 @@ export default {
         axios
           .post(`${SERVER_URL}/board/create`, item, {})
           .then((response) => {
-            confirm('작성하시겠습니까?');
-            alert('글쓰기 성공!');
-            this.$router.push('Board');
+            confirm("작성하시겠습니까?");
+            alert("글쓰기 성공!");
+            this.$router.push("Board");
           })
           .catch(function(error) {
             console.log(err);
@@ -133,7 +133,7 @@ export default {
   computed: {
     headerStyle() {
       return {
-        backgroundImage: `url(${this.header})`,
+        backgroundImage: `url(${this.header})`
       };
     },
   },
@@ -150,7 +150,7 @@ export default {
     justify-content: center;
   }
 
-  [class*='tab-pane-'] {
+  [class*="tab-pane-"] {
     margin-top: 3.213rem;
     padding-bottom: 50px;
 

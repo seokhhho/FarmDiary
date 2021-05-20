@@ -62,23 +62,23 @@ export default {
   data() {
     return {
       cropsDetail: [],
-      cropName: "",
+      cropName: ""
     };
   },
   props: {
     header: {
       type: String,
-      default: require("@/assets/img/city-profile.jpg"),
+      default: require("@/assets/img/city-profile.jpg")
     },
     img: {
       type: String,
-      default: require("@/assets/img/faces/christian.jpg"),
+      default: require("@/assets/img/faces/christian.jpg")
     },
   },
   computed: {
     headerStyle() {
       return {
-        backgroundImage: `url(${this.header})`,
+        backgroundImage: `url(${this.header})`
       };
     },
   },
@@ -86,7 +86,7 @@ export default {
     this.cropName = this.$route.params.cropName;
     axios({
       method: "get",
-      url: `${SERVER_URL}/KNY/guide/crop/${this.cropName}/`,
+      url: `${SERVER_URL}/guide/crop/${this.cropName}/`
     })
       .then((res) => {
         this.cropsDetail = [];

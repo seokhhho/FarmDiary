@@ -14,13 +14,13 @@
           <div id="board">
             <h2 style="text-align:center">나눔 게시판</h2>
             <div style="text-align:right">
-            <v-btn @click="create">글 작성</v-btn>
+              <v-btn @click="create">글 작성</v-btn>
             </div>
-
           </div>
         </div>
-        
-        <div  style="
+
+        <div
+          style="
           width: 100%;
           display: flex;
           flex-wrap: wrap;
@@ -28,17 +28,27 @@
           padding-left:17%;
           padding-right:17%;
           margin-top:30px;
-        ">
-          <div v-for="item in list" :key="item.name" @click="read(item.id)" style="width:25% ; margin-bottom:50px ; ">
-            <v-img :src="item.img[0]" height="220" width="220" style="border-radius:20px;cursor:pointer;border: 0.1rem solid grey; ">
+        "
+        >
+          <div
+            v-for="item in list"
+            :key="item.name"
+            @click="read(item.id)"
+            style="width:25% ; margin-bottom:50px ; "
+          >
+            <v-img
+              :src="item.img[0]"
+              height="220"
+              width="220"
+              style="border-radius:20px;cursor:pointer;border: 0.1rem solid grey; "
+            >
             </v-img>
             <div style="margin-left:100;cursor:pointer ;">
-              {{item.title}}
+              {{ item.title }}
             </div>
           </div>
-
         </div>
-          <!-- <v-app id="inspire">
+        <!-- <v-app id="inspire">
             <div class="text-center">
               <v-pagination
                 v-model="page"
@@ -49,15 +59,13 @@
             </div>
             
           </v-app> -->
-        
-        
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 // import { Pagination } from "@/components";
 const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
 export default {
@@ -66,7 +74,7 @@ export default {
   },
   data() {
     return {
-      title: 'ㅋㅋ',
+      title: "ㅋㅋ",
       list: [],
       infoPagination: 3,
       page: 1,
@@ -78,27 +86,27 @@ export default {
     this.getList();
   },
   components: {},
-  bodyClass: 'profile-page',
+  bodyClass: "profile-page",
 
   props: {
     header: {
       type: String,
-      default: require('@/assets/img/city-profile.jpg'),
+      default: require("@/assets/img/city-profile.jpg")
     },
     img: {
       type: String,
-      default: require('@/assets/img/faces/christian.jpg'),
+      default: require("@/assets/img/faces/christian.jpg")
     },
   },
   methods: {
     async getList() {
-      console.log('sdfsd');
+      console.log("sdfsd");
       try {
         const res = await axios.get(`${SERVER_URL}/sharing/read`, {
-          params: { type: '', word: this.page },
+          params: { type: "", word: this.page }
         });
         this.list = res.data;
-        console.log(res.data[1].title + '?');
+        console.log(res.data[1].title + "?");
         // this.hashKey = res.data.vote.hashKey;
         // const idx = res.data.vote.contractAddress * 1;
         // await this.getData(idx);
@@ -124,19 +132,17 @@ export default {
     },
 
     create() {
-      this.$router.push('createSharing');
-      
+      this.$router.push("createSharing");
     },
-    read(id){
+    read(id) {
       // alert("sdf");
-      this.$router.push('Sharing/'+id);
-
-    }
+      this.$router.push("Sharing/" + id);
+    },
   },
   computed: {
     headerStyle() {
       return {
-        backgroundImage: `url(${this.header})`,
+        backgroundImage: `url(${this.header})`
       };
     },
   },
@@ -153,7 +159,7 @@ export default {
     justify-content: center;
   }
 
-  [class*='tab-pane-'] {
+  [class*="tab-pane-"] {
     margin-top: 3.213rem;
     padding-bottom: 50px;
 
@@ -161,7 +167,5 @@ export default {
       margin-bottom: 2.142rem;
     }
   }
-
-
 }
 </style>
