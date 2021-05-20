@@ -46,6 +46,21 @@ public class FilesController {
 	    
 	    try {
 	    	System.out.println("1");
+//	    	System.out.println(System.getProperty("user.home"));
+//	    	System.out.println(System.getProperty("user.name"));
+	    	String path = System.getProperty("user.dir") + "/uploads";
+	    	File Folder = new File(path);
+	    	if (!Folder.exists()) {
+	    		try{
+	    		    Folder.mkdir(); //폴더 생성합니다.
+	    		    System.out.println("폴더가 생성되었습니다.");
+	    	     } 
+	    	     catch(Exception e){
+	    		    e.getStackTrace();
+	    		}        
+	         }else {
+	        	 System.out.println("폴더있음");
+	         }
 	      File newfile = new File(System.getProperty("user.dir") + "/uploads/" + newName);
 	      System.out.println("2");
 	      file.transferTo(newfile);
