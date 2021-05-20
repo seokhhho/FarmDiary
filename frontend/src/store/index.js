@@ -63,7 +63,7 @@ export default new Vuex.Store({
     LOGIN(context, user) {
       return axios({
         method: 'post',
-        url: "http://localhost:8090/user/login",
+        url: "http://ec2-3-135-227-210.us-east-2.compute.amazonaws.com:8089/user/login",
 
         params: {
           id: user.id,

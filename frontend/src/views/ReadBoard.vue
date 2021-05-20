@@ -19,34 +19,47 @@
             <!-- <img :src="board.img" > -->
             <div id="detailContents">
               <div style="text-align:center;margin-top:20px;margin-bottom:20px">
-                <img :src="board.img" style="width:30;height:30;" >
+                <img :src="board.img" style="width:30;height:30;" />
               </div>
-              <br>
+              <br />
               <div style="margin-bottom:20px">
-              {{ board.contents }}
+                {{ board.contents }}
               </div>
             </div>
-            <p style="width:90%;">
-              <!-- <v-btn
+            <!-- <p style="width:90%;"> -->
+            <!-- <v-btn
                 style="width:10%; margin-left:79%;margin-top:10px;margin-right:20px"
                 >수정</v-btn
               >
               <v-btn style="width:10%; margin-left:90%;margin-top:-60px"
                 >삭제</v-btn -->
-              
-            </p>
-            <div v-for="(item,index) in reply" :key="item.id" id="reply">
+
+            <div class="my-2" style="width:30%;margin-top:50px;margin-bottom:20px;margin-left:30%"><router-link to="/board">
+              <v-btn x-large color="success" dark width="90%">
+                <i class="material-icons">dashboard</i> 목록
+              </v-btn></router-link>
+            </div>
+            
+
+            <!-- </p> -->
+            <div v-for="(item, index) in reply" :key="item.id" id="reply">
               <div @click="openText(index)" style="cursor:pointer">
                 <div>{{ item.text }}</div>
-                <div style="font-size:7px">{{ item.date }} </div>
-                <div v-for="comment in item.reReply" :key="comment.id" >
-                  └ {{comment.text}}
-                  <div style="font-size:7px;margin-left:20px">{{ comment.date }} </div>
+                <div style="font-size:7px">{{ item.date }}</div>
+                <div v-for="comment in item.reReply" :key="comment.id">
+                  └ {{ comment.text }}
+                  <div style="font-size:7px;margin-left:20px">
+                    {{ comment.date }}
+                  </div>
                 </div>
                 <!-- <div>{{item.reReply[0].text}}</div> -->
               </div>
               <div v-if="tmp">
-                <div id="app" style="width:92%;margin-left:-14px;" v-if="re_reply[index]">
+                <div
+                  id="app"
+                  style="width:92%;margin-left:-14px;"
+                  v-if="re_reply[index]"
+                >
                   <v-container fluid>
                     <v-textarea
                       label="댓글달기"
@@ -94,7 +107,7 @@
 
 <script>
 import axios from 'axios';
-const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL;
 export default {
   data() {
     return {
@@ -103,7 +116,7 @@ export default {
       createdReply: '',
       re_reply: [],
       tmp: false,
-      reReply:'',
+      reReply: '',
     };
   },
 
@@ -121,13 +134,13 @@ export default {
     },
   },
   created() {
-    // this.readBoard();
-    // this.readReply();
+    this.readBoard();
+    this.readReply();
   },
   methods: {
     async readBoard() {
       try {
-        const res = await axios.get(`${SERVER_URL}/board/read`, {
+        const res = await axios.get(`${SERVER_URL}/LSH/board/read`, {
           params: { type: 'id', word: this.$route.params.id },
         });
         this.board = res.data[0];
@@ -144,12 +157,12 @@ export default {
 
     async readReply() {
       try {
-        const res = await axios.get(`${SERVER_URL}/reply/read`, {
+        const res = await axios.get(`${SERVER_URL}/LSH/reply/read`, {
           params: { boardId: this.$route.params.id },
         });
         this.reply = res.data;
-        console.log("sdf" + this.reply.length);
-        for(var i=0;i < this.reply.length;i++){
+        console.log('sdf' + this.reply.length);
+        for (var i = 0; i < this.reply.length; i++) {
           this.re_reply.push(false);
         }
         console.log(this.re_reply[0] + 'fhtr?');
@@ -167,10 +180,10 @@ export default {
       this.form = {
         boardId: this.$route.params.id,
         text: this.createdReply,
-        reReply:[],
+        reReply: [],
       };
       axios
-        .post(`${SERVER_URL}/reply/create`, this.form, {})
+        .post(`${SERVER_URL}/LSH/reply/create`, this.form, {})
         .then((response) => {
           // confirm("작성하시겠습니까?");
           // alert('글쓰기 성공!');
@@ -179,13 +192,13 @@ export default {
         .catch(function(error) {});
     },
 
-    createReReply(index){
+    createReReply(index) {
       this.form = {
         replyId: index,
         text: this.reReply,
       };
       axios
-        .put(`${SERVER_URL}/reply/updateReReply`, this.form, {})
+        .put(`${SERVER_URL}/LSH/reply/updateReReply`, this.form, {})
         .then((response) => {
           // confirm("작성하시겠습니까?");
           // alert('글쓰기 성공!');
@@ -194,16 +207,16 @@ export default {
         .catch(function(error) {});
     },
 
-    openText(index){
-      console.log(this.re_reply[index] + "sdfsdfsdfsdf")
-      if(this.re_reply[index]){
+    openText(index) {
+      console.log(this.re_reply[index] + 'sdfsdfsdfsdf');
+      if (this.re_reply[index]) {
         this.re_reply[index] = false;
         this.tmp = false;
-      }else{
+      } else {
         this.re_reply[index] = true;
         this.tmp = true;
       }
-    }
+    },
   },
   computed: {
     headerStyle() {

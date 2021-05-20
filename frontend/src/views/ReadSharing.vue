@@ -41,7 +41,11 @@
               
               <!-- <img :src="board.img[0]" style="width:30;height:30;" /> -->
               <!-- </div> -->
-              
+              <div class="my-2" style="width:30%;margin-top:50px;margin-bottom:20px;margin-left:35%"><router-link to="/sharing">
+              <v-btn x-large color="success" dark width="90%">
+                <i class="material-icons">dashboard</i> 목록
+              </v-btn></router-link>
+            </div>
             </div>
             <!-- <p style="width:90%;"> -->
               <!-- <v-btn
@@ -52,6 +56,7 @@
                 >삭제</v-btn
               > -->
             <!-- </p> -->
+            
             <div style="margin-top:-130px">
             <div v-for="(item, index) in reply" :key="item.id" id="reply">
               <div @click="openText(index)" style="cursor:pointer">
@@ -65,6 +70,7 @@
                 </div>
                 <!-- <div>{{item.reReply[0].text}}</div> -->
               </div>
+              
               <div v-if="tmp">
                 <div
                   id="app"
@@ -119,7 +125,7 @@
 
 <script>
 import axios from 'axios';
-const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL;
 export default {
   data() {
     return {
@@ -152,7 +158,7 @@ export default {
   methods: {
     async readBoard() {
       try {
-        const res = await axios.get(`${SERVER_URL}/sharing/read`, {
+        const res = await axios.get(`${SERVER_URL}/LSH/sharing/read`, {
           params: { type: 'id', word: this.$route.params.id },
         });
         this.board = res.data[0];
@@ -169,7 +175,7 @@ export default {
 
     async readReply() {
       try {
-        const res = await axios.get(`${SERVER_URL}/reply/read`, {
+        const res = await axios.get(`${SERVER_URL}/LSH/reply/read`, {
           params: { boardId: this.$route.params.id },
         });
         this.reply = res.data;
@@ -195,7 +201,7 @@ export default {
         reReply: [],
       };
       axios
-        .post(`${SERVER_URL}/reply/create`, this.form, {})
+        .post(`${SERVER_URL}/LSH/reply/create`, this.form, {})
         .then((response) => {
           // confirm("작성하시겠습니까?");
           // alert('글쓰기 성공!');
@@ -210,7 +216,7 @@ export default {
         text: this.reReply,
       };
       axios
-        .put(`${SERVER_URL}/reply/updateReReply`, this.form, {})
+        .put(`${SERVER_URL}/LSH/reply/updateReReply`, this.form, {})
         .then((response) => {
           // confirm("작성하시겠습니까?");
           // alert('글쓰기 성공!');

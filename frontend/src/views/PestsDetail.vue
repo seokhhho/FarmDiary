@@ -92,7 +92,7 @@ export default {
     this.cropName = this.$route.params.cropName;
     axios({
         method: "get",
-        url: `${SERVER_URL}/pests/detail/${this.cropName}/${this.pestName}/`
+        url: `${SERVER_URL}/KNY/pests/detail/${this.cropName}/${this.pestName}/`
       })
         .then(res => {
           this.pestsDetail = [];

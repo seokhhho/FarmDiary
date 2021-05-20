@@ -67,7 +67,7 @@
 <script>
 import axios from 'axios';
 // import UploadPage from "./components/UploadPage.vue";
-const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL;
 export default {
   data() {
     return {
@@ -116,7 +116,7 @@ export default {
             this.list = res.data;
 
             for(var i = 0 ; i < this.list.length ; i++){
-            this.imgs.push(SERVER_URL + '/file/read/' + this.list[i]);
+            this.imgs.push(SERVER_URL + '/LSH/file/read/' + this.list[i]);
             }
             item['img'] = this.imgs;
             // DB에 저장

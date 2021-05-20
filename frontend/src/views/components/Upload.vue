@@ -54,6 +54,7 @@
 
 <script>
 import FileUpload from "vue-upload-component";
+const SERVER_URL = process.env.VUE_APP_SERVER_URL;
 
 export default {
   components: {
@@ -77,11 +78,11 @@ export default {
       if (img.files.length != 0) {
         frm.append('file', img.files[0]);
         axios
-          .post(`${SERVER_URL}/file/upload/`, frm)
+          .post(`${SERVER_URL}/LSH/file/upload/`, frm)
           .then((res) => {
             // console.log(res.data.message)
             // item.push({img: SERVER_URL + "/file/read/" + res.data.message})
-            item['img'] = SERVER_URL + '/file/read/' + res.data.message;
+            item['img'] = SERVER_URL + '/LSH/file/read/' + res.data.message;
         })
           .catch((err) => {
             console.log(err);

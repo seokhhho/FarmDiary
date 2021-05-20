@@ -71,7 +71,7 @@
 <script>
 import axios from 'axios';
 // import { Pagination } from "@/components";
-const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
+const SERVER_URL = process.env.VUE_APP_SERVER_URL;
 export default {
   components: {
     // Pagination
@@ -171,9 +171,6 @@ export default {
     img {
       margin-bottom: 2.142rem;
     }
-  }
-
-  #board {
   }
 }
 </style>

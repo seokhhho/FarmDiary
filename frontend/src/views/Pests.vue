@@ -11,7 +11,7 @@
         >
           <md-field>
             <label>Search</label>
-            <md-input v-model="cropName" type="text"></md-input>
+            <md-input v-model="cropName" type="text" @keypress.enter="getPestsList(cropName)"></md-input>
           </md-field>
         <md-button class="md-success" @click="getPestsList(cropName)">Search</md-button>
         </div>
@@ -67,7 +67,7 @@ export default {
       this.name = this.cropName;
       axios({
         method: "get",
-        url: `${SERVER_URL}/pests/${crop}/`
+        url: `${SERVER_URL}/KNY/pests/${crop}/`
       })
         .then(res => {
           this.pestslist = [];

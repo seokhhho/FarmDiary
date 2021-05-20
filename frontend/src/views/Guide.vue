@@ -70,7 +70,7 @@ export default {
     getCropsList(place) {
       axios({
         method: "get",
-        url: `${SERVER_URL}/guide/${place}/`
+        url: `${SERVER_URL}/KNY/guide/${place}/`
       })
         .then(res => {
           this.cropslist = [];

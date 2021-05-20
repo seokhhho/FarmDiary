@@ -82,7 +82,7 @@ export default {
 
 }
         axios
-            .post(`${SERVER_URL}/pests/diagnose`, fd)
+            .post(`${SERVER_URL}/KNY/pests/diagnose`, fd)
             .then(res => {
               console.log(res.data);
               this.Img = "data: image/png;base64,"+res.data.img;
@@ -92,6 +92,7 @@ export default {
             .catch((error) => {
               console.log(error);
               alert('진단에 실패했습니다');
+              location.reload();
             });
 
       }
