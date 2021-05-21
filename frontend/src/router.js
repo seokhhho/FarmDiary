@@ -73,7 +73,11 @@ export default new Router({
     {
       path: "/board/:id",
       name: "readBoard",
-      components: { default: ReadBoard, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: ReadBoard,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
         header: { colorOnScroll: 200 },
         footer: { backgroundColor: "black" }
@@ -131,7 +135,11 @@ export default new Router({
     {
       path: "/pestsDiagnosis",
       name: "pestsDiagnosis",
-      components: { default: PestsDiagnosis, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: PestsDiagnosis,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
@@ -140,7 +148,11 @@ export default new Router({
     {
       path: "/pestsDetail/:cropName/:pestName",
       name: "pestsDetail",
-      components: { default: PestsDetail, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: PestsDetail,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
@@ -149,7 +161,11 @@ export default new Router({
     {
       path: "/sharing/:id",
       name: "readSharing",
-      components: { default: ReadSharing, header: MainNavbar, footer: MainFooter },
+      components: {
+        default: ReadSharing,
+        header: MainNavbar,
+        footer: MainFooter
+      },
       props: {
         header: { colorOnScroll: 200 },
         footer: { backgroundColor: "black" }
@@ -163,8 +179,7 @@ export default new Router({
         header: { colorOnScroll: 200 },
         footer: { backgroundColor: "black" }
       }
-    },
-    
+    }
   ],
   scrollBehavior: to => {
     if (to.hash) {

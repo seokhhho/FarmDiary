@@ -18,7 +18,7 @@
           <div id="board">
             <h2 style="text-align:center">오늘의 전원일기 게시판</h2>
             <div style="text-align:right">
-            <v-btn @click="create">글 작성</v-btn>
+              <v-btn @click="create">글 작성</v-btn>
             </div>
             <v-simple-table>
               <template v-slot:default>
@@ -31,10 +31,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="item in list" :key="item.name" @click="read(item.id)" style="cursor:pointer ;">
+                  <tr
+                    v-for="(item,idx) in list"
+                    :key="item.name"
+                    @click="read(item.id)"
+                    style="cursor:pointer ;"
+                  >
                     <!-- <td>1</td> -->
                     <td>{{ item.title }}</td>
-                    <td>하이룽</td>
+                    <td>{{nickname[idx]}}</td>
                     <td>{{ item.date }}</td>
                   </tr>
                 </tbody>
@@ -49,27 +54,24 @@
             :page-count="5"
           >
           </pagination> -->
-        
-          <v-app id="inspire">
-            <div class="text-center">
-              <v-pagination
-                v-model="page"
-                :total-visible="7"
-                :length="total/10 + 1"
-                @input="getList()"
-              ></v-pagination>
-            </div>
-            
-          </v-app>
-        
-        
+
+        <v-app id="inspire">
+          <div class="text-center">
+            <v-pagination
+              v-model="page"
+              :total-visible="7"
+              :length="total / 10 + 1"
+              @input="getList()"
+            ></v-pagination>
+          </div>
+        </v-app>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 // import { Pagination } from "@/components";
 const SERVER_URL = process.env.VUE_APP_SERVER_URL2;
 export default {
@@ -78,11 +80,12 @@ export default {
   },
   data() {
     return {
-      title: 'ㅋㅋ',
+      title: "ㅋㅋ",
       list: [],
       infoPagination: 3,
       page: 1,
       total: 0,
+      nickname : ["하이룽","미미광어","팡대","모히또","호이짜","사랑해유","와이키키","나스타","미미시스터","나천재","니코니코니","싸브레","솔라씨","카키","핫썸머","코피퐝"],
     };
   },
   created() {
@@ -90,27 +93,27 @@ export default {
     this.getList();
   },
   components: {},
-  bodyClass: 'profile-page',
+  bodyClass: "profile-page",
 
   props: {
     header: {
       type: String,
-      default: require('@/assets/img/city-profile.jpg'),
+      default: require("@/assets/img/city-profile.jpg")
     },
     img: {
       type: String,
-      default: require('@/assets/img/faces/christian.jpg'),
-    },
+      default: require("@/assets/img/faces/christian.jpg")
+    }
   },
   methods: {
     async getList() {
-      console.log('sdfsd');
+      console.log("sdfsd");
       try {
         const res = await axios.get(`${SERVER_URL}/board/read`, {
-          params: { type: '', word: this.page },
+          params: { type: "", word: this.page }
         });
         this.list = res.data;
-        console.log(res.data[1].title + '?');
+        console.log(res.data[1].title + "?");
         // this.hashKey = res.data.vote.hashKey;
         // const idx = res.data.vote.contractAddress * 1;
         // await this.getData(idx);
@@ -136,18 +139,17 @@ export default {
     },
 
     create() {
-      this.$router.push('createBoard');
+      this.$router.push("createBoard");
     },
-    read(id){
+    read(id) {
       // alert("sdf");
-      this.$router.push('Board/'+id);
-
-    }
+      this.$router.push("Board/" + id);
+    },
   },
   computed: {
     headerStyle() {
       return {
-        backgroundImage: `url(${this.header})`,
+        backgroundImage: `url(${this.header})`
       };
     },
   },
@@ -164,7 +166,7 @@ export default {
     justify-content: center;
   }
 
-  [class*='tab-pane-'] {
+  [class*="tab-pane-"] {
     margin-top: 3.213rem;
     padding-bottom: 50px;
 
