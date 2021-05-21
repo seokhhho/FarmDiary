@@ -44,7 +44,7 @@
           </div>
 
           <h3 @click="move(diagnosis.pestName)" v-if="diagnosis.pestName">
-            {{diagnosis.percentage}}%확률로 {{diagnosis.pestName}}이라고 판단됩니다. 
+            {{diagnosis.percentage}}확률로 {{diagnosis.pestName}}이라고 판단됩니다. 
           </h3>
 
         </div>

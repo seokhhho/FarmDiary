@@ -88,7 +88,7 @@ public class PestsController {
 		Calendar cal = Calendar.getInstance();
 
 		System.out.println(cal.getTime());
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 		System.out.println(diagnosisRepository.findByFileName(cropName+now).getFileName());
 		return new ResponseEntity<Diagnosis>(diagnosisRepository.findByFileName(cropName+now), HttpStatus.OK);
 	}
