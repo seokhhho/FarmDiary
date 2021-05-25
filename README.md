@@ -17,53 +17,53 @@
 
 ### Service
 
-- 태그에 맞게 캠핑장을 추천해주는 **Content based Filtering**을 제공한다.
-- 사용자별로 가장 우선순위의 캠핑장을 추천해주는  **Collaborative Filtering**를 제공한다.
+- 병충해 진단 및 검색을 **경섭이형 알고리즘 적어주세요** 인공지능 알고리즘으로 서비스 제공한다.
+- 사용자간의 나눔 게시판 및 자유게시판 서비스를 제공한다.
 
 ### Compatibility
 
 - Front-end `openjdk 11.0.9.1`, `npm 6.14.10`, `vue/cli 4.5.19` 버전에서 테스트되었다.
-- Back-end `python 3.6.8`,`django 3.7.1` 버전에서 테스트 되었다.
+- Back-end `python 3.6.8`,`spring boot 2.3.10` 버전에서 테스트 되었다.
 - We tested the code using `openjdk 11.0.9.1`, `npm 6.14.10`, `vue/cli 4.5.19`.
-- 데이터베이스는 `MySQL 8.0.22`에서 작성되었다.
-- We created database using `MySQL 8.0.22`
-- AWS EC2를 이용하여 프로젝트를 서버에 배포하였다.
-- We deployed project using AWS EC2.
+- 데이터베이스는 `mongodb`에서 작성되었다.
+- We created database using `mongoDB`
+- AWS EC2를 이용하여 프로젝트를  msa로 서버에 배포하도록 노력히하였다.
+- Using AWS EC2, I tried to deploy the project to the server as msa.
 
-## Data Analysis(데이터 전 처리)
-- Data Analysis폴더 안 **read me** 파일 확인
+## AI(병충해 진단)
+- AI폴더 안 **read me** 파일 확인
 
 ## 서비스 소개
 
-> `캠퍼스` 플랫폼에서는 크게 **캠핑장 추천 , 검색**의 2가지 세부서비스를 제공한다.
+> `전원일기` 플랫폼에서는 크게 **병충해 진단 및 검색, 나눔 게시판 및 자유 게시판**의 2가지 세부서비스를 제공한다.
 >
-> - In this platform, users can utilize 2 services of `recommend`, `Search`
+> - In this platform, users can utilize 2 services of `isease and pest diagnosis and search`,`sharing bulletin board and free bulletin board`
 
 **Main Page**
 
 - 메인 페이지로는 **추천태그별 캠핑장 리스트**가 띄워지게 된다.
 
-![](Docs/img/MainPage.gif)
+
 
 - 로그인과 회원가입을 을 통해 개인별 추천서비스를 받을 수 있고, 좋아요와 댓글을 남길 수 있다.
 
 
 
 
-![](Docs/img/login.png)
 
 
 
 
 
-![](Docs/img/register.png)
+
+
 
 
 
 - 캠핑장 클릭시 Detail UI
 
 
-![](Docs/img/DetailPage.gif)
+
 
 
 
@@ -73,7 +73,7 @@
 
 - 태그가 아닌 일반검색으로 검색하면 해당 검색어를 포함된(이름또는 지역) 캠핑장 리스트가 출력된다.
 
-![](Docs/img/SearchWord.gif)
+
 
 
 
@@ -81,7 +81,6 @@
 
 - 태그로 검색하게 되면, 캠핑장의 태그가 해당태그인 리스트를 출력 한다.
 
-![](Docs/img/SearchTag.gif)
 
 
 
