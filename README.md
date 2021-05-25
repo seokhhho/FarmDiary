@@ -25,10 +25,10 @@
 - Front-end `openjdk 11.0.9.1`, `npm 6.14.10`, `vue/cli 4.5.19` 버전에서 테스트되었다.
 - Back-end `python 3.6.8`,`spring boot 2.3.10` 버전에서 테스트 되었다.
 - We tested the code using `openjdk 11.0.9.1`, `npm 6.14.10`, `vue/cli 4.5.19`.
-- 데이터베이스는 `mongodb`에서 작성되었다.
-- We created database using `mongoDB`
-- AWS EC2를 이용하여 프로젝트를  msa로 서버에 배포하도록 노력히하였다.
-- Using AWS EC2, I tried to deploy the project to the server as msa.
+- 데이터베이스는 `Mongodb`에서 작성되었다.
+- We created database using `MongoDB`
+- AWS EC2를 이용하여 프로젝트를  MSA로 서버에 배포하도록 노력히하였다.
+- Using AWS EC2, I tried to deploy the project to the server as MSA.
 
 ## AI(병충해 진단)
 - AI폴더 안 **read me** 파일 확인
