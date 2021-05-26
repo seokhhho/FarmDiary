@@ -22,17 +22,11 @@
 
 ### Compatibility
 
-- Front-end `tensorflow 1.14.0`, `keras 2.3.1`, `python 3.7.0`, `numpy 1.15.4`,`matplotlib 3.3.2`, `libopencv 3.4.2`, `pillow 8.2.0`, `pip 21.0.1`, `pymongo 3.11.4`, `scikit-learn 0.19.1`, `scipy 1.1.0`, , 버전에서 테스트되었다.
-- Back-end `python 3.6.8`,`spring boot 2.3.10` 버전에서 테스트 되었다.
-- We tested the code using `openjdk 11.0.9.1`, `npm 6.14.10`, `vue/cli 4.5.19`.
-- 데이터베이스는 `Mongodb`에서 작성되었다.
-- We created database using `MongoDB`
-- AWS EC2를 이용하여 프로젝트를  MSA로 서버에 배포하도록 노력히하였다.
-- Using AWS EC2, I tried to deploy the project to the server as MSA.
+- 모델링은 `tensorflow 1.14.0`, `keras 2.3.1`, `python 3.7.0`, `numpy 1.15.4`, `libopencv 3.4.2`, `pillow 8.2.0`, `pip 21.0.1`, `pymongo 3.11.4`, `scikit-learn 0.19.1`, `scipy 1.1.0` 버전에서 테스트되었다.
+- 데이터 수치화(그래프)는 `matplotlib 3.3.2` 버전에서 테스트 되었습니다.
 
 ## AI(병충해 진단)
-- AI폴더 안 **read me** 파일 확인
-- 
+- 최종 목표
 ![KakaoTalk_20210526_155345150](https://user-images.githubusercontent.com/77223675/119620182-ae372a00-be3f-11eb-8b23-5c61622c693d.png)
 
 
