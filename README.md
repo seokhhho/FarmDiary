@@ -70,30 +70,28 @@
 - 텃밭에서 직접 가꾼 작물들을 나눔하며 소통하는 커뮤니티 게시판
 - 사진업로드 , 댓글 기능 구현
 
-![KakaoTalk_20210526_154948793_07](C:\Users\multicampus\Desktop\HatchfulExport-All\KakaoTalk_20210526_154948793_07.png)
-
-![KakaoTalk_20210526_154948793_11](C:\Users\multicampus\Desktop\HatchfulExport-All\KakaoTalk_20210526_154948793_11.png)
 
 
 
-![KakaoTalk_20210526_154948793_10](C:\Users\multicampus\Desktop\HatchfulExport-All\KakaoTalk_20210526_154948793_10.png)
+
+![나눔 글쓰기](./image/나눔 글쓰기.png)
+
+![나눔 게시판](./image/나눔 게시판.png)
+
+![나눔 글](./image/나눔 글.png)
 
 ### 4. 오늘의 전원일기 게시판
 
 - Farm Diary 회원들 간의 소통이 가능 한 커뮤니티 게시판
 - 사진업로드 , 댓글 기능 구현
 
-![KakaoTalk_20210526_154948793_06](C:\Users\multicampus\Desktop\HatchfulExport-All\KakaoTalk_20210526_154948793_06.png)
-
-![KakaoTalk_20210526_154948793_04](C:\Users\multicampus\Desktop\HatchfulExport-All\KakaoTalk_20210526_154948793_04.png)
 
 
+![전원일기 글쓰기](./image/전원일기 글쓰기.png)
 
-![게시판글](C:\Users\multicampus\Desktop\게시판글.jpg)
+![오늘의 전원일기 게시판](./image/오늘의 전원일기 게시판.png)
 
-
-
-
+![게시판글](./image/게시판글.jpg)
 
 
 ## 설치 안내
