@@ -36,27 +36,36 @@
 ![result2](https://user-images.githubusercontent.com/77223675/119620903-7a103900-be40-11eb-98ce-a96b1b1da7ff.png)
 
 
-## 서비스 소개
+## 모델 환경 설명(Requirements)
 
-> `전원일기` 플랫폼에서는 크게 **병충해 진단 및 검색, 나눔 게시판 및 자유 게시판**의 2가지 세부서비스를 제공한다.
+> `전원일기` 플랫폼에서는 크게 **병충해 진단 및 검색, 나눔 게시판 및 자유 게시판**의 2가지 세부서비스를 제공하는데 AI모델은 진단 서비스에 해당됩니다.
 >
 > - In this platform, users can utilize 2 services of `isease and pest diagnosis and search`,`sharing bulletin board and free bulletin board`
 
-**Main Page**
-
-- 메인 페이지로는 **추천태그별 캠핑장 리스트**가 띄워지게 된다.
-
-
-
-- 로그인과 회원가입을 을 통해 개인별 추천서비스를 받을 수 있고, 좋아요와 댓글을 남길 수 있다.
+- 환경구축에대해 말씀드리자면 우선 오픈소스라이브러리를 위해 tensorflow를 사용하였고 가장 정확한 Image Classifier를 모델링하기위해 matplotlib, Keras, Scikit learn, numpy, pandas등을 대표적으로 활용했습니다.
+- matploblib는 파이썬에서 매트랩과 유사한 그래프를 표시하기위한 라이브러리로, 이따 deeplearning파트에서 보여드리겠지만, 딥러닝의 Loss function을 가시화하기위한 목적으로 사용하였습니다.\
+- keras는 파이썬으로 작성된 오픈소스 신경망 라이브러리로, 딥 신경망을 설계하기위해 (CNN사용)사용하였습니다. 
+- Scikit learn활용을 위해 pandas, numpy를 설치하였고 keras 버전 호환을 위해 python은 3.7버전으로 유지하였습니다.
 
 
+![CNN](https://user-images.githubusercontent.com/77223675/119621912-a11b3a80-be41-11eb-8f18-27711d7ebd38.PNG)
 
+- CNN으로 설명드리면 저는 keras로 Multi Layer Perceptron을 이용하였고 이미지 크기는 64x64로 정하여 RGB값으로 바꿔주면서 resize하여 그 값을 numpy 라이브러리를 이용해 저장하였습니다.
+- 이렇게 저장된 훈련된 모델을 같고 conv2D를 이용해 만든 신경망 모델로 3x3크기의 컨볼루션 레이어를 32개의 필터수를 처음에 생성하였고 maxpolling2D함수를 통해 주요 값만 뽑아내어 작은 출력값을 만들어내 디테일한 정확도를 높였습니다.
+그리고 Flatten()함수는 CNN에서 맥스풀링을 거쳐 나온 특징을 다시 전달하여 학습합니다.
 
+![epochs1](https://user-images.githubusercontent.com/77223675/119622872-8e553580-be42-11eb-9fe9-d8a777aa4889.png)
 
+- 이런식으로 설계된 모델에 저는 질병 라벨별 데이터셋으로 약 200장의 사진을 선정하였습니다. 처음에는 keras imagedatagenerator로 이미지를 각도를 바꿔 움직이는 등으로 데이터를 더 모아 1000장씩 하려했으나 속도문제도 있고 과적합(Overfitting)의 문제로 정확도가 낮아지는 문제가 생겨 100장씩 낮춰가며 결과를 재확인하였고 200장이 95%라는 가장높은 정확도가 도출되었습니다.
+- 위 사진은 Loss function의 값을 최소화 하기위해 최대 50번까지 Test를 시도한 모습입니다. 
+ 
+![epochs2](https://user-images.githubusercontent.com/77223675/119623213-ea1fbe80-be42-11eb-8b5e-8d5ae716aa84.png)
 
+- test가 37번째를 넘어가는 순간부터 Loss는 더 이상 작아지지않는 최솟값의 결과를 얻을 수 있었습니다.
 
+![graph](https://user-images.githubusercontent.com/77223675/119623378-12a7b880-be43-11eb-987e-3dcece1211d4.png)
 
+- 그리고 이를 시각화 하기위해 matplotlib를 사용하여 Epochs에 따른 Loss Value의 변화를 확인할 수 있었습니다.
 
 
 
