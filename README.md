@@ -124,28 +124,15 @@ python manage.py runserver
 ### Backend
 
 
- -폴더구조는 서버 `Back-end`, 앱 단위 `main`, `camp`로 구분된다.
- 
-    
-    1. DB 연동
-    - python manage.py inspectdb (db 감지 및 model.py 코드 작성 용이)
-        
-    2.DB가 변경 되었을 시
-    - python manage.py makemigrations
-    - python manage.py migrate
-
+ -폴더구조는 서버 `config-server`,`zuul`,`FarmDiary_Board_Service`,`FarmDiary_Guide_Service`,`FarmDiary_User_Service`로 구성된다.
+ - msa형식으로 배포하도록 노력하였다.
+ - msa조직도
+ ![msa 조직도](https://user-images.githubusercontent.com/62299120/119616959-387d8f00-be3c-11eb-9505-49ac8c45fb6d.PNG)
 
 
 ### Database
 
 ### ERdiagram
-![](Docs/img/erd.png)
-
-
-
-## 저작권 및 사용권 정보
-
-- 캠핑장 추천에서 사용되는 캠핑장 정보는 한국관광공사에서 제공하는 [캠핑장 정보 API]( http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/basedList)를 활용하였다.
 
 
 ```markdown
@@ -155,43 +142,17 @@ python manage.py runserver
 - less less-loader
 - mint-ui -S
 - vue-awesome-swiper
+- vuetify
 - vuex
 ```
 
 
 
-## 해결한 버그
-
-> 코드를 서버에 올렸을 때 발생하는 주요 버그 및 그에 대한 해결법을 정리하였다.
-
-**:Aws에 띄운 mysql과 Django가 연결되지 않는다.**
-
-**원인**
-
-- 계정에 대한 권한문제
-
-**해결방안**
-
-- 계정을 새로 생성하고, 해당 스키마에 대한 권한을 부여하여 해결했다.
-
-
-
-## 알려진 버그
-
-> 아직 없습니다.
-
-
-
-## 배포
-
-
-> https://j4a304.p.ssafy.io
 
 
 
 
 
 
-
-***Copyright* © 2021 SSAFY_SEOUL3_TEAM4_캠퍼스**
+***Copyright* © 2021 SSAFY_SEOUL3_TEAM5_전원일기**
 
