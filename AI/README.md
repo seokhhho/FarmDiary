@@ -26,8 +26,14 @@
 - 데이터 수치화(그래프)는 `matplotlib 3.3.2` 버전에서 테스트 되었습니다.
 
 ## AI(병충해 진단)
-- 최종 목표
+- 최종 목표는 아래와같이 인코딩된 이미지 String값이 MongoDB에 저장되면, 이를 불러와 디코딩한 후 \multi_img_data\imgs_others\test 폴더에 Imagexx.png 형태로 저장합니다.
+
+![encod](https://user-images.githubusercontent.com/77223675/119621140-be9bd480-be40-11eb-9238-f75939737706.PNG)
+
+- 이후 추측되는 질병명과 확률을 PestName과 Percentage의 결과로 저장한 후 MongoDB에 저장합니다.
 ![KakaoTalk_20210526_155345150](https://user-images.githubusercontent.com/77223675/119620182-ae372a00-be3f-11eb-8b23-5c61622c693d.png)
+
+![result2](https://user-images.githubusercontent.com/77223675/119620903-7a103900-be40-11eb-98ce-a96b1b1da7ff.png)
 
 
 ## 서비스 소개
