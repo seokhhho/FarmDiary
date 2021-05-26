@@ -65,8 +65,35 @@
 
 ![회원가입 페이지](https://user-images.githubusercontent.com/62299120/119615708-a923ac00-be3a-11eb-9dba-fd37ef4edb18.PNG)
 
+### 3. 나눔 게시판
 
-### 3. 쭈주죽 써주세요!!
+- 텃밭에서 직접 가꾼 작물들을 나눔하며 소통하는 커뮤니티 게시판
+- 사진업로드 , 댓글 기능 구현
+
+![KakaoTalk_20210526_154948793_07](C:\Users\multicampus\Desktop\HatchfulExport-All\KakaoTalk_20210526_154948793_07.png)
+
+![KakaoTalk_20210526_154948793_11](C:\Users\multicampus\Desktop\HatchfulExport-All\KakaoTalk_20210526_154948793_11.png)
+
+
+
+![KakaoTalk_20210526_154948793_10](C:\Users\multicampus\Desktop\HatchfulExport-All\KakaoTalk_20210526_154948793_10.png)
+
+### 4. 오늘의 전원일기 게시판
+
+- Farm Diary 회원들 간의 소통이 가능 한 커뮤니티 게시판
+- 사진업로드 , 댓글 기능 구현
+
+![KakaoTalk_20210526_154948793_06](C:\Users\multicampus\Desktop\HatchfulExport-All\KakaoTalk_20210526_154948793_06.png)
+
+![KakaoTalk_20210526_154948793_04](C:\Users\multicampus\Desktop\HatchfulExport-All\KakaoTalk_20210526_154948793_04.png)
+
+
+
+![게시판글](C:\Users\multicampus\Desktop\게시판글.jpg)
+
+
+
+
 
 
 ## 설치 안내
