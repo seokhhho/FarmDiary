@@ -1,4 +1,3 @@
-
 # 전원일기
 
 ---
@@ -18,12 +17,12 @@
 
 ### Service
 
-- 병충해 판단을 **경섭이형 알고리즘 적어주세요** AI 알고리즘으로 진단한다.
+- 병충해 판단을 AI 알고리즘으로 진단한다.
 - 사용자간의 **나눔 게시판** 및 **자유게시판** 서비스를 제공한다.
 
 ### Compatibility
 
-- Front-end `openjdk 11.0.9.1`, `npm 6.14.10`, `vue/cli 4.5.19` 버전에서 테스트되었다.
+- Front-end `tensorflow 1.14.0`, `keras 2.3.1`, `python 3.7.0`, `numpy 1.15.4`,`matplotlib 3.3.2`, `libopencv 3.4.2`, `pillow 8.2.0`, `pip 21.0.1`, `pymongo 3.11.4`, `scikit-learn 0.19.1`, `scipy 1.1.0`, , 버전에서 테스트되었다.
 - Back-end `python 3.6.8`,`spring boot 2.3.10` 버전에서 테스트 되었다.
 - We tested the code using `openjdk 11.0.9.1`, `npm 6.14.10`, `vue/cli 4.5.19`.
 - 데이터베이스는 `Mongodb`에서 작성되었다.
