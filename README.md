@@ -72,11 +72,11 @@
 
 **1단계: npm 설치**
 
-- `frontend` 프로젝트 폴더에서 npm을 설치한다.
+- `frontend` 프로젝트 폴더에서 yarn을 설치한다.
 
 ```bash
-npm install
-npm run serve
+yarn install
+yarn serve
 ```
 
 **2단계: 환경변수 설정**
@@ -88,39 +88,33 @@ npm run serve
   ```markdown
   ## .env.local
   
-  VUE_APP_SERVER_URL=<서버 URL>
-  VUE_APP_MAP_API_KEY=<카카오 지도 API Javascript 키>
-  VUE_APP_SERVER_URL_C=<크롤링 서버 URL>
+  VUE_APP_SERVER_URL= zuul 서버에 호출하는 주소1
+  VUE_APP_SERVER_URL2= zuul 서버에 호출하는 주소2
   ```
-  
-- `backend` 프로젝트 폴더에서 모듈을 설치한다.
-```bash
-pip install -r requirements.txt
-python manage.py runserver
-```
-
 > 
 
 
 ## File Manifest
 
->**Naming Rule**
->
->- 파일 명은 `PascalCase`를 따른다.
->- 변수 및 함수명은 `snake_case`를 따른다.
-
 ### Frontend
 
-- 폴더 구조는 `member`, `app`, `campsite`로 구분한다.
+- 폴더 구조는 `views`안에 존재한다.
 
   ```markdown
-  1. member
-  - 회원계정 관련
-  2. app
+  1. Login, Register
+  - 로그인 및 회원가입 관련
+  2. Index
   - 메인페이지
-  3. campsite
-  - 캠핑장 추천 서비스 관련
-
+  3. Board,CreateBoard,ReadBoard
+  - 게시판 관련
+  4. Guide, Crop 
+  - 가이드 관련
+  5. CreateSharing, Readsharing, Sharing
+  - 나눔 게시판 관련
+  6. Pests, PestDetail, PestDiagnosis
+  - 병충해 관련
+  ```
+  
 ### Backend
 
 
