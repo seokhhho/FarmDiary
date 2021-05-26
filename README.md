@@ -48,6 +48,7 @@
 - 로그인과 회원가입을 을 통해 개인별 추천서비스를 받을 수 있고, 좋아요와 댓글을 남길 수 있다.
 
 
+![메인 페이지](https://user-images.githubusercontent.com/62299120/119615386-4cc08c80-be3a-11eb-8454-59d41c7ce0e6.PNG)
 
 
 
