@@ -43,6 +43,7 @@
 
 - 메인 페이지로는 **병충해 진단** 페이지로 이동하는 버튼이 있다.
 - 사용자 위치에 따라 **일주일 날씨 정보**를 제공한다.
+- Nav Bar를 통해 여러 페이지로 이동가능하다.
 
 ![메인 페이지](https://user-images.githubusercontent.com/62299120/119615386-4cc08c80-be3a-11eb-8454-59d41c7ce0e6.PNG)
 
@@ -63,14 +64,14 @@
 ![회원가입 페이지](https://user-images.githubusercontent.com/62299120/119615708-a923ac00-be3a-11eb-9dba-fd37ef4edb18.PNG)
 
 
-### 3. 
+### 3. 쭈주죽 써주세요!!
 
 
 ## 설치 안내
 
 > `git clone`을 한 후 아래의 작업을 진행해야 프론트 서버를 실행할 수 있다.
 
-**1단계: npm 설치**
+**1단계: yarn 설치**
 
 - `frontend` 프로젝트 폴더에서 yarn을 설치한다.
 
@@ -118,7 +119,7 @@ yarn serve
 ### Backend
 
 
- -폴더구조는 서버 `config-server`,`zuul`,`FarmDiary_Board_Service`,`FarmDiary_Guide_Service`,`FarmDiary_User_Service`로 구성된다.
+ - 폴더구조는 서버 `config-server`,`zuul`,`FarmDiary_Board_Service`,`FarmDiary_Guide_Service`,`FarmDiary_User_Service`로 구성된다.
  - msa형식으로 배포하도록 노력하였다.
  - msa조직도
  ![msa 조직도](https://user-images.githubusercontent.com/62299120/119616959-387d8f00-be3c-11eb-9505-49ac8c45fb6d.PNG)
@@ -139,13 +140,6 @@ yarn serve
 - vuetify
 - vuex
 ```
-
-
-
-
-
-
-
 
 
 ***Copyright* © 2021 SSAFY_SEOUL3_TEAM5_전원일기**
