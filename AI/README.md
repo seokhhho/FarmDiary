@@ -32,6 +32,9 @@
 
 ## AI(병충해 진단)
 - AI폴더 안 **read me** 파일 확인
+- 
+![KakaoTalk_20210526_155345150](https://user-images.githubusercontent.com/77223675/119620182-ae372a00-be3f-11eb-8b23-5c61622c693d.png)
+
 
 ## 서비스 소개
 
