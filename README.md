@@ -29,7 +29,7 @@
 - We tested the code using `openjdk 11.0.9.1`, `npm 6.14.10`, `vue/cli 4.5.19`.
 - 데이터베이스는 `MongoDB`에서 작성되었다.
 - We created database using `MongoDB`
-- AWS EC2를 이용하여 프로젝트를  MSA로 서버에 배포하도록 노력히하였다.
+- AWS EC2를 이용하여 프로젝트를  MSA로 서버에 배포하도록 노력하였다.
 - Using AWS EC2, I tried to deploy the project to the server as MSA.
 
 ## AI(병충해 진단)
