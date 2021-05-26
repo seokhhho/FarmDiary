@@ -30,7 +30,7 @@
 
 ![encod](https://user-images.githubusercontent.com/77223675/119621140-be9bd480-be40-11eb-9238-f75939737706.PNG)
 
-- 이후 추측되는 질병명과 확률을 PestName과 Percentage의 결과로 저장한 후 MongoDB에 저장합니다.
+- 이후 설계한 모델에 테스트 이미지를 불러와 추론한 후 질병명과 확률을 PestName과 Percentage의 결과로 저장하고  MongoDB에 해당 부분만 저장합니다.
 ![KakaoTalk_20210526_155345150](https://user-images.githubusercontent.com/77223675/119620182-ae372a00-be3f-11eb-8b23-5c61622c693d.png)
 
 ![result2](https://user-images.githubusercontent.com/77223675/119620903-7a103900-be40-11eb-98ce-a96b1b1da7ff.png)
