@@ -65,158 +65,23 @@
 
 ![graph](https://user-images.githubusercontent.com/77223675/119623378-12a7b880-be43-11eb-987e-3dcece1211d4.png)
 
+- 그리고 이에 해당되는 95%의 추론 정확도를 확인할 수 있었습니다.
+
+![percentage](https://user-images.githubusercontent.com/77223675/119624287-f3f5f180-be43-11eb-868f-622c106e5eee.png)
+
 - 그리고 이를 시각화 하기위해 matplotlib를 사용하여 Epochs에 따른 Loss Value의 변화를 확인할 수 있었습니다.
+- 이렇게 test가 끝난 모델을 ./multi_img_data/imgs_others/test에 .ipynb_checkpoints폴더로 저장하고  아래 사진과 같이 모델에 입력하고자 하는 이미지들을 MongoDB에서 디코딩하여 저장합니다.
 
+![test_example](https://user-images.githubusercontent.com/77223675/119624020-b2fddd00-be43-11eb-95a6-70d1a3ce640e.png)
 
+- test하고자하는 이미지들을 설계한 Image classifier에 입력한 결과 
 
+![result_example](https://user-images.githubusercontent.com/77223675/119624057-bdb87200-be43-11eb-9d4a-db8a2a2bf130.png)
 
+- PestName과 Percentage를 확인할 수 있었습니다.
 
 
-- 캠핑장 클릭시 Detail UI
 
-
-
-
-
-
-
-
-### 1. 키워드 검색
-
-- 태그가 아닌 일반검색으로 검색하면 해당 검색어를 포함된(이름또는 지역) 캠핑장 리스트가 출력된다.
-
-
-
-
-
-### 2. 태그로 검색
-
-- 태그로 검색하게 되면, 캠핑장의 태그가 해당태그인 리스트를 출력 한다.
-
-
-
-
-
-## 설치 안내
-
-> `git clone`을 한 후 아래의 작업을 진행해야 프론트 서버를 실행할 수 있다.
-
-**1단계: npm 설치**
-
-- `frontend` 프로젝트 폴더에서 npm을 설치한다.
-
-```bash
-npm install
-npm run serve
-```
-
-**2단계: 환경변수 설정**
-
-- `frontend` 폴더 내의 최상위 창에서 환경변수 `.env.local`이라는 파일을 생성한다.
-
-- 환경변수로 관리하는 데이터는 다음과 같다.
-
-  ```markdown
-  ## .env.local
-  
-  VUE_APP_SERVER_URL=<서버 URL>
-  VUE_APP_MAP_API_KEY=<카카오 지도 API Javascript 키>
-  VUE_APP_SERVER_URL_C=<크롤링 서버 URL>
-  ```
-  
-- `backend` 프로젝트 폴더에서 모듈을 설치한다.
-```bash
-pip install -r requirements.txt
-python manage.py runserver
-```
-
-> 
-
-
-## File Manifest
-
->**Naming Rule**
->
->- 파일 명은 `PascalCase`를 따른다.
->- 변수 및 함수명은 `snake_case`를 따른다.
-
-### Frontend
-
-- 폴더 구조는 `member`, `app`, `campsite`로 구분한다.
-
-  ```markdown
-  1. member
-  - 회원계정 관련
-  2. app
-  - 메인페이지
-  3. campsite
-  - 캠핑장 추천 서비스 관련
-
-### Backend
-
-
- -폴더구조는 서버 `Back-end`, 앱 단위 `main`, `camp`로 구분된다.
- 
-    
-    1. DB 연동
-    - python manage.py inspectdb (db 감지 및 model.py 코드 작성 용이)
-        
-    2.DB가 변경 되었을 시
-    - python manage.py makemigrations
-    - python manage.py migrate
-
-
-
-### Database
-
-### ERdiagram
-![](Docs/img/erd.png)
-
-
-
-## 저작권 및 사용권 정보
-
-- 캠핑장 추천에서 사용되는 캠핑장 정보는 한국관광공사에서 제공하는 [캠핑장 정보 API]( http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/basedList)를 활용하였다.
-
-
-```markdown
-- axios
-- lodash
-- vue bootstrap-vue bootstrap
-- less less-loader
-- mint-ui -S
-- vue-awesome-swiper
-- vuex
-```
-
-
-
-## 해결한 버그
-
-> 코드를 서버에 올렸을 때 발생하는 주요 버그 및 그에 대한 해결법을 정리하였다.
-
-**:Aws에 띄운 mysql과 Django가 연결되지 않는다.**
-
-**원인**
-
-- 계정에 대한 권한문제
-
-**해결방안**
-
-- 계정을 새로 생성하고, 해당 스키마에 대한 권한을 부여하여 해결했다.
-
-
-
-## 알려진 버그
-
-> 아직 없습니다.
-
-
-
-## 배포
-
-
-> https://j4a304.p.ssafy.io
 
 
 
